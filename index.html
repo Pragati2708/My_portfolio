@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pragati Singh ✿ engineer but make it cute</title>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Nunito:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+:root {
+  --beige:#faf4e8;
+  --beige2:#f2e8d0;
+  --beige3:#e8d8b8;
+  --beige4:#d9c8a0;
+  --rust:#c4622d;
+  --rust2:#d4784a;
+  --rust3:#e8956a;
+  --rust4:#f5c4a0;
+  --sage:#6b9e70;
+  --sage2:#8aba8f;
+  --sage3:#b8d8ba;
+  --sage4:#dceedd;
+  --olive:#5a7a3c;
+  --olive2:#7a9e58;
+  --moss:#3d5c28;
+  --brown:#6b4c3b;
+  --brown2:#8c6855;
+  --mauve:#9e7b7b;
+  --dusty:#c9a0a0;
+  --cream:#fdf9f2;
+  --text:#2c1f0e;
+  --text2:#5a4030;
+  --text3:#8c7060;
+  --handwrite:'Caveat',cursive;
+  --display:'Fredoka One',cursive;
+  --body:'Nunito',sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--cream);
+  color:var(--text);
+  font-family:var(--body);
+  min-height:100vh;
+  overflow-x:hidden;
+  cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z' fill='%23c4622d' stroke='%23fff' stroke-width='1'/%3E%3C/svg%3E") 12 12, auto;
+}
+
+/* ── PAPER TEXTURE BACKGROUND ── */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    radial-gradient(ellipse at 15% 25%, rgba(196,98,45,0.07) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 70%, rgba(107,158,112,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 50%, rgba(196,98,45,0.03) 0%, transparent 70%);
+}
+
+/* grid notebook lines */
+body::after{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:
+    linear-gradient(rgba(107,158,112,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107,158,112,0.06) 1px, transparent 1px);
+  background-size:32px 32px;
+}
+
+.site{position:relative;z-index:1;}
+
+/* ── CUSTOM SCROLLBAR ── */
+::-webkit-scrollbar{width:8px;}
+::-webkit-scrollbar-track{background:var(--beige2);}
+::-webkit-scrollbar-thumb{background:var(--rust3);border-radius:4px;}
+
+/* ── NAV ── */
+.nav{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0.9rem 2.5rem;
+  background:rgba(253,249,242,0.92);
+  border-bottom:2px solid var(--beige3);
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(16px);
+}
+
+/* tape decoration on nav */
+.nav::before{
+  content:'✿ ✦ ✿ ✦ ✿ ✦ ✿ ✦ ✿ ✦ ✿ ✦ ✿ ✦ ✿';
+  position:absolute;top:-1px;left:0;right:0;
+  text-align:center;font-size:0.6rem;color:var(--sage2);
+  letter-spacing:0.3em;pointer-events:none;
+}
+
+.nav-logo{
+  font-family:var(--handwrite);font-size:1.6rem;font-weight:700;
+  color:var(--rust);
+}
+.nav-logo span{color:var(--olive);}
+
+.nav-links{display:flex;gap:0.15rem;flex-wrap:wrap;}
+.nav-btn{
+  background:none;border:none;cursor:pointer;
+  font-family:var(--handwrite);font-size:0.95rem;font-weight:600;
+  color:var(--text3);padding:0.4rem 0.75rem;border-radius:20px;
+  letter-spacing:0.01em;transition:all 0.25s;white-space:nowrap;
+}
+.nav-btn:hover{background:var(--beige2);color:var(--rust);transform:rotate(-1deg) scale(1.05);}
+.nav-btn.active{
+  background:var(--rust);color:var(--cream);
+  transform:rotate(-1deg);
+  box-shadow:2px 2px 0 var(--brown);
+}
+
+/* ── SECTIONS ── */
+section{display:none;animation:fadeIn 0.5s ease;min-height:100vh;}
+section.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── TAPE EFFECT ── */
+.tape{
+  display:inline-block;
+  background:rgba(200,180,140,0.35);
+  padding:0.2rem 1.5rem;
+  transform:rotate(-2deg);
+  font-family:var(--handwrite);font-size:0.8rem;color:var(--brown2);
+  position:relative;
+}
+
+/* ── STICKER ── */
+.sticker{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:0.3rem 0.9rem;border-radius:20px;
+  font-family:var(--handwrite);font-size:0.85rem;font-weight:700;
+  border:2px dashed currentColor;
+}
+
+/* ── SECTION HEADER ── */
+.pg-header{text-align:center;padding:3rem 2rem 1.5rem;}
+.pg-eyebrow{
+  font-family:var(--handwrite);font-size:1rem;color:var(--sage);
+  margin-bottom:0.3rem;letter-spacing:0.05em;
+}
+.pg-title{
+  font-family:var(--display);font-size:2.8rem;color:var(--text);
+  line-height:1.15;
+}
+.pg-title em{color:var(--rust);font-style:normal;}
+.pg-title span{color:var(--sage);}
+.deco-line{
+  display:flex;align-items:center;justify-content:center;gap:0.5rem;
+  margin:0.75rem auto;color:var(--beige4);font-size:0.9rem;
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;gap:3rem;
+  padding:5rem 3rem 3rem;
+  max-width:1150px;margin:0 auto;
+}
+
+.hero-left{position:relative;}
+
+.wobbly-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--sage4);border:2px solid var(--sage3);
+  border-radius:20px;padding:0.3rem 1rem;
+  font-family:var(--handwrite);font-size:0.9rem;color:var(--olive);
+  margin-bottom:1.25rem;animation:wobble 3s ease-in-out infinite;
+}
+@keyframes wobble{0%,100%{transform:rotate(-1deg)}50%{transform:rotate(1deg)}}
+.blink-dot{width:7px;height:7px;border-radius:50%;background:var(--sage);animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.2}}
+
+.hero-greeting{
+  font-family:var(--handwrite);font-size:1.2rem;color:var(--text3);
+  margin-bottom:0.25rem;
+}
+.hero-name{
+  font-family:var(--display);font-size:clamp(3.2rem,7vw,5.5rem);
+  color:var(--text);line-height:0.95;margin-bottom:0.75rem;
+}
+.hero-name em{color:var(--rust);display:block;}
+
+.hero-subline{
+  font-family:var(--handwrite);font-size:1.15rem;color:var(--text3);
+  margin-bottom:0.5rem;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.cross{color:var(--rust3);}
+
+.hero-quote{
+  font-family:var(--handwrite);font-size:1.35rem;color:var(--rust);
+  line-height:1.5;margin:1rem 0;
+  padding:0.75rem 1rem 0.75rem 1.25rem;
+  border-left:3px solid var(--rust3);
+  background:rgba(196,98,45,0.05);
+  border-radius:0 12px 12px 0;
+  position:relative;
+}
+
+.hero-bio{
+  font-size:0.9rem;color:var(--text2);line-height:1.85;
+  margin-bottom:2rem;max-width:420px;
+}
+
+.hero-cta{display:flex;gap:0.9rem;flex-wrap:wrap;}
+.btn-rust{
+  background:var(--rust);color:var(--cream);border:none;cursor:pointer;
+  font-family:var(--handwrite);font-size:1.05rem;font-weight:700;
+  padding:0.65rem 1.6rem;border-radius:30px;
+  box-shadow:3px 3px 0 var(--brown);
+  transition:all 0.2s;
+}
+.btn-rust:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--brown);}
+.btn-sage{
+  background:var(--sage4);color:var(--olive);border:2px solid var(--sage3);cursor:pointer;
+  font-family:var(--handwrite);font-size:1.05rem;font-weight:700;
+  padding:0.65rem 1.6rem;border-radius:30px;
+  box-shadow:3px 3px 0 var(--sage3);
+  transition:all 0.2s;
+}
+.btn-sage:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--sage2);}
+
+/* hero right — scrapbook art */
+.hero-right{
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.scrapbook-frame{
+  width:300px;height:360px;position:relative;
+}
+.frame-main{
+  width:100%;height:100%;
+  background:linear-gradient(145deg,var(--beige2),var(--beige3));
+  border-radius:8px;border:3px solid var(--beige4);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  box-shadow:6px 6px 0 var(--beige4), 8px 8px 0 rgba(0,0,0,0.1);
+}
+.frame-initial{
+  font-family:var(--display);font-size:10rem;
+  color:var(--beige3);position:absolute;
+  user-select:none;
+}
+.frame-tape-h{
+  position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+  width:80px;height:22px;background:rgba(200,170,120,0.45);
+  border-radius:3px;
+}
+.frame-tape-h2{
+  position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
+  width:60px;height:22px;background:rgba(107,158,112,0.3);
+  border-radius:3px;
+}
+.frame-sticker1{
+  position:absolute;top:12px;right:-18px;
+  background:var(--rust);color:var(--cream);
+  width:60px;height:60px;border-radius:50%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:var(--handwrite);font-size:0.62rem;text-align:center;line-height:1.3;
+  font-weight:700;box-shadow:2px 2px 0 var(--brown);transform:rotate(8deg);
+}
+.float-clouds{position:absolute;inset:0;pointer-events:none;}
+.cloud{
+  position:absolute;background:var(--cream);
+  border-radius:20px;padding:0.3rem 0.7rem;
+  font-family:var(--handwrite);font-size:0.75rem;color:var(--text2);
+  border:1.5px solid var(--beige3);
+  box-shadow:2px 2px 0 var(--beige4);
+  animation:float 4s ease-in-out infinite;
+}
+.cloud:nth-child(2){animation-delay:-1.5s;animation-duration:5s;}
+.cloud:nth-child(3){animation-delay:-2.8s;animation-duration:3.5s;}
+.cloud:nth-child(4){animation-delay:-0.8s;animation-duration:4.5s;}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* tech pills scroll */
+.tech-scroll{margin-top:3rem;overflow:hidden;width:100%;}
+.tech-track{display:flex;gap:0.75rem;animation:scrollL 22s linear infinite;width:max-content;}
+.tech-pill{
+  background:var(--cream);border:2px solid var(--beige3);
+  border-radius:20px;padding:0.35rem 0.9rem;
+  font-family:var(--handwrite);font-size:0.9rem;color:var(--text2);
+  white-space:nowrap;transition:all 0.2s;
+  box-shadow:2px 2px 0 var(--beige3);
+}
+.tech-pill:hover{border-color:var(--rust3);color:var(--rust);transform:rotate(-2deg);}
+@keyframes scrollL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── ABOUT ── */
+.about-wrap{max-width:1050px;margin:0 auto;padding:2rem 2.5rem 4rem;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+
+.scrap-card{
+  background:var(--cream);border:2px solid var(--beige3);
+  border-radius:12px;padding:1.75rem;
+  position:relative;
+  box-shadow:4px 4px 0 var(--beige3);
+  transition:transform 0.2s;
+}
+.scrap-card:hover{transform:rotate(0.5deg);}
+.scrap-card::before{
+  content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+  width:60px;height:16px;background:rgba(200,170,120,0.4);border-radius:3px;
+}
+
+.about-quote{
+  font-family:var(--handwrite);font-size:1.25rem;color:var(--rust);
+  line-height:1.6;margin:1.25rem 0;padding:1rem 1.25rem;
+  background:var(--beige2);border-radius:12px;
+  border:2px dashed var(--rust4);
+  position:relative;
+}
+.about-quote::before{
+  content:'" ';font-size:3rem;color:var(--rust3);font-family:Georgia,serif;
+  position:absolute;top:-10px;left:8px;line-height:1;
+}
+.about-para{font-size:0.88rem;color:var(--text2);line-height:1.9;margin-bottom:0.9rem;}
+
+.trait-row{display:flex;flex-direction:column;gap:0.6rem;margin-top:1.25rem;}
+.trait-item{
+  display:flex;align-items:center;gap:10px;
+  font-family:var(--handwrite);font-size:1rem;color:var(--text2);
+}
+.trait-icon{font-size:1.1rem;}
+
+/* skills */
+.skill-wrap{margin-top:0.5rem;}
+.skill-group-label{
+  font-family:var(--handwrite);font-size:0.85rem;color:var(--sage);
+  letter-spacing:0.08em;margin-bottom:0.9rem;margin-top:1rem;
+}
+.skill-item{margin-bottom:0.85rem;}
+.skill-top{display:flex;justify-content:space-between;margin-bottom:0.3rem;}
+.skill-name{font-family:var(--handwrite);font-size:0.95rem;color:var(--text2);font-weight:600;}
+.skill-pct{font-family:var(--handwrite);font-size:0.85rem;color:var(--rust);}
+.skill-track{height:8px;background:var(--beige3);border-radius:4px;overflow:hidden;border:1px solid var(--beige4);}
+.skill-fill{height:100%;border-radius:4px;background:var(--rust);transition:width 1.2s ease;}
+.skill-fill.sage{background:var(--sage);}
+.skill-fill.olive{background:var(--olive2);}
+.skill-fill.brown{background:var(--brown2);}
+
+/* stat cards */
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem;margin-top:1.5rem;}
+.stat-card{
+  background:var(--beige2);border:2px solid var(--beige3);border-radius:12px;
+  padding:1rem;text-align:center;
+  box-shadow:3px 3px 0 var(--beige4);transition:transform 0.2s;
+}
+.stat-card:hover{transform:rotate(-1deg);}
+.stat-num{font-family:var(--display);font-size:2rem;color:var(--rust);}
+.stat-label{font-family:var(--handwrite);font-size:0.8rem;color:var(--text3);margin-top:2px;}
+
+/* ── WORK & EDUCATION ── */
+.work-wrap{max-width:860px;margin:0 auto;padding:1rem 2.5rem 4rem;}
+.timeline{position:relative;padding-left:2.5rem;margin-top:1.5rem;}
+.timeline::before{
+  content:'';position:absolute;left:10px;top:0;bottom:0;
+  width:2px;background:repeating-linear-gradient(to bottom,var(--rust3) 0,var(--rust3) 8px,transparent 8px,transparent 16px);
+}
+.tl-item{position:relative;margin-bottom:2rem;}
+.tl-dot{
+  position:absolute;left:-2.6rem;top:16px;
+  width:18px;height:18px;border-radius:50%;
+  border:3px solid var(--rust);background:var(--cream);
+  transition:all 0.3s;cursor:pointer;
+}
+.tl-item:hover .tl-dot{background:var(--rust);transform:scale(1.3);}
+.tl-card{
+  background:var(--cream);border:2px solid var(--beige3);border-radius:16px;
+  padding:1.5rem;box-shadow:4px 4px 0 var(--beige3);
+  transition:all 0.25s;position:relative;
+}
+.tl-card:hover{border-color:var(--rust3);transform:translateY(-2px);box-shadow:6px 6px 0 var(--rust4);}
+.tl-period{font-family:var(--handwrite);font-size:0.9rem;color:var(--sage);margin-bottom:0.3rem;}
+.tl-role{font-family:var(--display);font-size:1.15rem;color:var(--text);margin-bottom:0.2rem;}
+.tl-org{font-family:var(--handwrite);font-size:1rem;color:var(--rust2);font-weight:600;margin-bottom:0.75rem;}
+.tl-desc{font-size:0.83rem;color:var(--text2);line-height:1.8;}
+.tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.75rem;}
+.tl-tag{
+  font-family:var(--handwrite);font-size:0.8rem;
+  padding:0.15rem 0.65rem;border-radius:12px;
+  background:var(--sage4);color:var(--olive);
+  border:1px solid var(--sage3);
+}
+.tl-tag.rust-tag{background:rgba(196,98,45,0.1);color:var(--rust);border-color:var(--rust4);}
+.edu-dot{border-color:var(--sage) !important;}
+.edu-card{border-color:var(--sage3)!important;box-shadow:4px 4px 0 var(--sage3)!important;}
+.edu-card:hover{border-color:var(--sage)!important;box-shadow:6px 6px 0 var(--sage3)!important;}
+
+/* ── DEVOPS JOURNEY ── */
+.journey-wrap{max-width:1050px;margin:0 auto;padding:1rem 2.5rem 4rem;}
+.journey-note{
+  font-family:var(--handwrite);font-size:1.1rem;color:var(--text2);
+  line-height:1.8;margin-bottom:2.5rem;padding:1.5rem;
+  background:var(--beige2);border-radius:16px;border:2px dashed var(--beige4);
+  position:relative;
+}
+.journey-note::before{
+  content:'📌';position:absolute;top:-12px;left:16px;font-size:1.3rem;
+}
+.timeline-horizontal{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;
+  margin-bottom:2.5rem;
+}
+.phase-card{
+  background:var(--cream);border:2px solid var(--beige3);border-radius:20px;
+  padding:1.5rem;position:relative;overflow:hidden;
+  box-shadow:4px 4px 0 var(--beige3);transition:all 0.25s;
+}
+.phase-card:hover{transform:translateY(-4px) rotate(-0.5deg);box-shadow:6px 8px 0 var(--beige4);}
+.phase-num{
+  position:absolute;bottom:-10px;right:8px;
+  font-family:var(--display);font-size:5rem;color:var(--beige3);
+  line-height:1;user-select:none;
+}
+.phase-era{
+  font-family:var(--handwrite);font-size:0.82rem;color:var(--sage);
+  letter-spacing:0.1em;margin-bottom:0.4rem;
+}
+.phase-title{font-family:var(--display);font-size:1rem;color:var(--text);margin-bottom:0.6rem;}
+.phase-body{font-size:0.8rem;color:var(--text2);line-height:1.75;position:relative;z-index:1;}
+.phase-tools{display:flex;flex-wrap:wrap;gap:5px;margin-top:0.75rem;position:relative;z-index:1;}
+.tool-tag{
+  font-family:var(--handwrite);font-size:0.75rem;
+  padding:0.1rem 0.55rem;border-radius:10px;
+  background:var(--beige2);color:var(--brown);border:1px solid var(--beige4);
+}
+
+/* funny sidebar */
+.funny-devops{margin-top:2rem;}
+.funny-title{
+  font-family:var(--handwrite);font-size:1.1rem;color:var(--rust);
+  margin-bottom:1rem;text-align:center;
+}
+.funny-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.85rem;}
+.funny-card{
+  background:var(--beige2);border:2px dashed var(--beige4);
+  border-radius:14px;padding:1rem;text-align:center;
+  transition:transform 0.2s;
+}
+.funny-card:hover{transform:rotate(-2deg);}
+.funny-icon{font-size:1.5rem;margin-bottom:0.4rem;}
+.funny-label{font-family:var(--handwrite);font-size:0.72rem;color:var(--rust);font-weight:700;}
+.funny-desc{font-family:var(--handwrite);font-size:0.8rem;color:var(--text3);margin-top:0.2rem;line-height:1.4;}
+
+/* ── PROJECTS ── */
+.projects-wrap{max-width:1100px;margin:0 auto;padding:1rem 2.5rem 4rem;}
+.project-intro{
+  font-family:var(--handwrite);font-size:1rem;color:var(--text3);
+  text-align:center;margin-bottom:2rem;
+}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;}
+.proj-card{
+  background:var(--cream);border:2px solid var(--beige3);border-radius:20px;
+  overflow:hidden;box-shadow:4px 4px 0 var(--beige3);
+  transition:all 0.25s;cursor:pointer;
+}
+.proj-card:hover{transform:translateY(-5px) rotate(0.5deg);box-shadow:7px 8px 0 var(--beige4);border-color:var(--rust3);}
+.proj-header{padding:1.25rem 1.25rem 0.75rem;border-bottom:1.5px dashed var(--beige3);}
+.proj-icon-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem;}
+.proj-emoji{font-size:1.6rem;}
+.proj-badges{display:flex;flex-wrap:wrap;gap:5px;}
+.proj-badge{
+  font-family:var(--handwrite);font-size:0.72rem;
+  padding:0.12rem 0.55rem;border-radius:10px;font-weight:700;
+}
+.badge-shell{background:rgba(90,122,62,0.12);color:var(--olive);border:1px solid var(--sage3);}
+.badge-docker{background:rgba(50,130,200,0.1);color:#2882c8;border:1px solid #b0d4f0;}
+.badge-cicd{background:rgba(196,98,45,0.1);color:var(--rust);border:1px solid var(--rust4);}
+.badge-linux{background:rgba(107,76,59,0.1);color:var(--brown);border:1px solid var(--beige4);}
+.badge-aws{background:rgba(230,150,0,0.1);color:#c47a00;border:1px solid #f5d080;}
+.badge-js{background:rgba(200,180,0,0.1);color:#8a7800;border:1px solid #e0d080);}
+.proj-title{font-family:var(--display);font-size:1rem;color:var(--text);}
+.proj-body{padding:0.75rem 1.25rem;}
+.proj-desc{font-size:0.8rem;color:var(--text2);line-height:1.75;margin-bottom:1rem;}
+
+/* flow diagram inside project card */
+.flow-diagram{
+  background:var(--beige2);border-radius:12px;padding:1rem;
+  border:1.5px solid var(--beige3);margin-bottom:1rem;overflow-x:auto;
+}
+.flow-steps{display:flex;align-items:center;gap:4px;flex-wrap:wrap;justify-content:center;}
+.flow-step{
+  background:var(--cream);border:1.5px solid var(--beige4);border-radius:8px;
+  padding:0.25rem 0.55rem;font-family:var(--handwrite);font-size:0.72rem;
+  color:var(--text2);white-space:nowrap;text-align:center;
+}
+.flow-arrow{color:var(--rust3);font-size:0.8rem;flex-shrink:0;}
+.flow-step.highlight{background:var(--rust);color:var(--cream);border-color:var(--rust);}
+.flow-step.sage-step{background:var(--sage4);color:var(--olive);border-color:var(--sage3);}
+
+.proj-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.75rem 1.25rem;border-top:1.5px dashed var(--beige3);
+  background:var(--beige2);
+}
+.github-link{
+  font-family:var(--handwrite);font-size:0.85rem;color:var(--rust);
+  text-decoration:none;display:flex;align-items:center;gap:5px;
+  font-weight:700;transition:all 0.2s;
+}
+.github-link:hover{color:var(--brown);transform:translateX(3px);}
+.proj-lang{font-family:var(--handwrite);font-size:0.75rem;color:var(--text3);}
+
+/* ── MISTAKES ── */
+.mistakes-wrap{max-width:860px;margin:0 auto;padding:1rem 2.5rem 4rem;}
+.mistakes-intro{
+  font-family:var(--handwrite);font-size:1rem;color:var(--text3);
+  text-align:center;margin-bottom:2rem;max-width:550px;margin-left:auto;margin-right:auto;
+  line-height:1.7;
+}
+.mistake-card{
+  background:var(--cream);border:2px solid var(--beige3);border-radius:20px;
+  padding:1.5rem;margin-bottom:1.25rem;
+  display:grid;grid-template-columns:56px 1fr;gap:1rem;align-items:start;
+  box-shadow:4px 4px 0 var(--beige3);transition:all 0.25s;
+}
+.mistake-card:hover{border-color:var(--rust3);box-shadow:6px 6px 0 var(--rust4);transform:translateX(3px);}
+.mistake-icon-box{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+  border:2px dashed var(--beige4);background:var(--beige2);
+  flex-shrink:0;
+}
+.mistake-cat{font-family:var(--handwrite);font-size:0.78rem;color:var(--sage);letter-spacing:0.08em;margin-bottom:0.3rem;}
+.mistake-title{font-family:var(--display);font-size:0.95rem;color:var(--text);margin-bottom:0.5rem;}
+.mistake-desc{font-size:0.8rem;color:var(--text2);line-height:1.8;margin-bottom:0.65rem;}
+.mistake-lesson{
+  font-family:var(--handwrite);font-size:0.88rem;color:var(--olive);
+  padding:0.5rem 0.8rem;background:var(--sage4);
+  border-radius:10px;border-left:3px solid var(--sage);line-height:1.6;
+}
+
+/* ── BLOG ── */
+.blog-wrap{max-width:1000px;margin:0 auto;padding:1rem 2.5rem 4rem;}
+.blog-intro{font-family:var(--handwrite);font-size:1rem;color:var(--text3);text-align:center;margin-bottom:2rem;line-height:1.7;max-width:560px;margin-left:auto;margin-right:auto;}
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;}
+
+.blog-open-card{
+  background:var(--cream);border:2px solid var(--beige3);border-radius:20px;
+  padding:1.5rem;box-shadow:4px 4px 0 var(--beige3);
+  transition:all 0.25s;cursor:pointer;
+}
+.blog-open-card:hover{border-color:var(--sage);transform:translateY(-3px) rotate(-0.5deg);box-shadow:6px 6px 0 var(--sage3);}
+.blog-cat{font-family:var(--handwrite);font-size:0.8rem;color:var(--sage);margin-bottom:0.6rem;letter-spacing:0.06em;}
+.blog-title{font-family:var(--display);font-size:0.95rem;color:var(--text);line-height:1.4;margin-bottom:0.5rem;}
+.blog-excerpt{font-size:0.78rem;color:var(--text3);line-height:1.7;margin-bottom:1rem;}
+.blog-foot{display:flex;justify-content:space-between;align-items:center;}
+.blog-date{font-family:var(--handwrite);font-size:0.78rem;color:var(--text3);}
+.read-btn-sm{
+  font-family:var(--handwrite);font-size:0.82rem;color:var(--rust);
+  background:none;border:none;cursor:pointer;font-weight:700;
+  transition:all 0.2s;
+}
+.read-btn-sm:hover{color:var(--brown);transform:translateX(3px);}
+
+/* locked blog */
+.blog-locked-card{
+  background:var(--beige2);border:2px dashed var(--rust4);border-radius:20px;
+  padding:1.5rem;position:relative;overflow:hidden;
+  box-shadow:4px 4px 0 var(--rust4);
+}
+.lock-banner{
+  display:inline-flex;align-items:center;gap:5px;
+  background:rgba(196,98,45,0.12);border:1px solid var(--rust4);
+  border-radius:20px;padding:0.22rem 0.7rem;
+  font-family:var(--handwrite);font-size:0.8rem;color:var(--rust);
+  margin-bottom:0.75rem;
+}
+.locked-title{font-family:var(--display);font-size:0.95rem;color:var(--text3);line-height:1.4;margin-bottom:0.5rem;}
+.locked-preview{
+  font-size:0.78rem;color:var(--text3);line-height:1.65;
+  -webkit-mask-image:linear-gradient(to bottom,black 0%,transparent 85%);
+  mask-image:linear-gradient(to bottom,black 0%,transparent 85%);
+  max-height:48px;overflow:hidden;margin-bottom:0.75rem;
+}
+.no-access-box{
+  background:rgba(196,98,45,0.07);border:1.5px dashed var(--rust4);
+  border-radius:10px;padding:0.65rem 0.85rem;margin-bottom:0.75rem;text-align:center;
+}
+.no-access-main{font-family:var(--handwrite);font-size:0.9rem;color:var(--rust);font-weight:700;}
+.no-access-sub{font-family:var(--handwrite);font-size:0.76rem;color:var(--text3);margin-top:2px;line-height:1.4;}
+.ask-access-btn{
+  width:100%;background:var(--rust);color:var(--cream);border:none;cursor:pointer;
+  font-family:var(--handwrite);font-size:0.9rem;font-weight:700;
+  padding:0.55rem;border-radius:12px;
+  box-shadow:2px 2px 0 var(--brown);transition:all 0.2s;
+}
+.ask-access-btn:hover{transform:translateY(-2px);box-shadow:4px 4px 0 var(--brown);}
+
+/* ── MODAL ── */
+.modal-bg{
+  display:none;position:fixed;inset:0;z-index:500;
+  background:rgba(44,31,14,0.6);
+  align-items:center;justify-content:center;
+  min-height:500px;
+}
+.modal-bg.open{display:flex;}
+.modal-box{
+  background:var(--cream);border:3px solid var(--beige3);border-radius:24px;
+  padding:2rem;max-width:420px;width:92%;position:relative;
+  box-shadow:8px 8px 0 var(--beige4);
+}
+.modal-box::before{
+  content:'';position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+  width:80px;height:18px;background:rgba(200,170,120,0.4);border-radius:4px;
+}
+.modal-close{
+  position:absolute;top:1rem;right:1rem;background:var(--beige2);
+  border:2px solid var(--beige3);cursor:pointer;width:30px;height:30px;
+  border-radius:50%;font-size:1rem;color:var(--text2);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--handwrite);font-weight:700;transition:all 0.2s;
+}
+.modal-close:hover{background:var(--rust);color:var(--cream);border-color:var(--rust);}
+.modal-icon{font-size:2.5rem;text-align:center;margin-bottom:0.75rem;}
+.modal-title{font-family:var(--display);font-size:1.3rem;color:var(--text);margin-bottom:0.35rem;text-align:center;}
+.modal-sub{font-family:var(--handwrite);font-size:0.92rem;color:var(--text3);line-height:1.7;margin-bottom:1rem;text-align:center;}
+.modal-blog-name{
+  font-family:var(--handwrite);font-size:0.85rem;color:var(--rust);
+  margin-bottom:1.25rem;padding:0.5rem 0.8rem;
+  background:var(--beige2);border-radius:10px;border:1px dashed var(--rust4);
+  text-align:center;
+}
+.modal-label{font-family:var(--handwrite);font-size:0.82rem;color:var(--text3);display:block;margin-bottom:0.3rem;font-weight:600;}
+.modal-input{
+  width:100%;background:var(--beige2);border:2px solid var(--beige3);
+  border-radius:10px;padding:0.6rem 0.85rem;margin-bottom:0.75rem;
+  font-family:var(--handwrite);font-size:0.9rem;color:var(--text);
+  outline:none;transition:border-color 0.2s;
+}
+.modal-input:focus{border-color:var(--rust);}
+textarea.modal-input{resize:vertical;min-height:80px;}
+.modal-submit{
+  width:100%;background:var(--rust);color:var(--cream);border:none;cursor:pointer;
+  font-family:var(--handwrite);font-size:1rem;font-weight:700;
+  padding:0.8rem;border-radius:30px;
+  box-shadow:3px 3px 0 var(--brown);transition:all 0.2s;margin-top:0.25rem;
+}
+.modal-submit:hover{transform:translateY(-2px);box-shadow:5px 5px 0 var(--brown);}
+.modal-success{
+  text-align:center;padding:1rem 0;
+  font-family:var(--handwrite);font-size:1.1rem;color:var(--olive);line-height:1.6;
+}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:2.5rem;border-top:2px dashed var(--beige3);
+  margin-top:1rem;
+}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:0.75rem;flex-wrap:wrap;}
+.footer-link{
+  font-family:var(--handwrite);font-size:1rem;color:var(--text2);
+  text-decoration:none;transition:all 0.2s;
+  padding:0.2rem 0.75rem;border-radius:12px;border:1.5px solid var(--beige3);
+}
+.footer-link:hover{color:var(--rust);border-color:var(--rust3);transform:rotate(-2deg);}
+footer p{font-family:var(--handwrite);font-size:0.88rem;color:var(--text3);line-height:1.7;}
+footer strong{color:var(--rust);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:760px){
+  .hero{grid-template-columns:1fr;gap:2rem;padding:4.5rem 1.5rem 2rem;}
+  .hero-right{display:none;}
+  .about-grid,.timeline-horizontal,.funny-grid{grid-template-columns:1fr;}
+  .nav-links{gap:0.1rem;}
+  .nav-btn{font-size:0.8rem;padding:0.3rem 0.5rem;}
+}
+</style>
+</head>
+<body>
+<div class="site">
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav">
+  <div class="nav-logo">pragati <span>✿</span></div>
+  <div class="nav-links">
+    <button class="nav-btn active" onclick="show('home',this)">✿ welcome</button>
+    <button class="nav-btn" onclick="show('about',this)">☕ who even am i</button>
+    <button class="nav-btn" onclick="show('work',this)">💼 places that paid me</button>
+    <button class="nav-btn" onclick="show('journey',this)">☁ cobol to cloud</button>
+    <button class="nav-btn" onclick="show('projects',this)">🛠 things i built</button>
+    <button class="nav-btn" onclick="show('mistakes',this)">🌱 oops & lessons</button>
+    <button class="nav-btn" onclick="show('blog',this)">✍ tiny thoughts</button>
+  </div>
+</nav>
+
+<!-- ═══ HOME ═══ -->
+<section id="home" class="active">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="wobbly-badge"><div class="blink-dot"></div> open to devops roles ✦ thane, mh</div>
+      <p class="hero-greeting">hi there, I'm 🌿</p>
+      <h1 class="hero-name">Pragati<em>Singh.</em></h1>
+      <div class="hero-subline">
+        <span>mainframe survivor</span>
+        <span class="cross">✦</span>
+        <span>cloud romanticist</span>
+        <span class="cross">✦</span>
+        <span>AWS in progress ☁</span>
+      </div>
+      <div class="hero-quote">"She is the one who creates herself."</div>
+      <p class="hero-bio">
+        4.8 years in IT. Started with COBOL and JCL at Cognizant & TCS, worked on real banking systems for CitiBank and Manulife. Then one night, discovered DevOps and everything changed. Now I'm building cloud infrastructure, containerizing things, and deploying dreams to production ☁
+      </p>
+      <div class="hero-cta">
+        <button class="btn-rust" onclick="show('projects',document.querySelectorAll('.nav-btn')[4])">🛠 see my work</button>
+        <button class="btn-sage" onclick="show('journey',document.querySelectorAll('.nav-btn')[3])">☁ my journey</button>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="scrapbook-frame">
+        <div class="frame-main">
+          <div class="frame-initial">P</div>
+          <div class="frame-tape-h"></div>
+          <div class="frame-tape-h2"></div>
+          <div class="frame-sticker1">open<br>to<br>hire ✦</div>
+        </div>
+        <div class="float-clouds">
+          <div class="cloud" style="top:-20px;left:-30px;">☁ AWS</div>
+          <div class="cloud" style="bottom:60px;left:-40px;">🐳 Docker</div>
+          <div class="cloud" style="top:70px;right:-30px;">⚙️ Terraform</div>
+          <div class="cloud" style="bottom:10px;right:-20px;">☸ K8s</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- tech scroll -->
+  <div class="tech-scroll">
+    <div class="tech-track">
+      <span class="tech-pill">☁ deploying dreams to production</span>
+      <span class="tech-pill">🐳 tiny containers, huge emotions</span>
+      <span class="tech-pill">⚙ terraform: push & pray</span>
+      <span class="tech-pill">🐧 surviving on grep & caffeine</span>
+      <span class="tech-pill">☁ financially supporting AWS</span>
+      <span class="tech-pill">🔁 ci/cd or cry/cd</span>
+      <span class="tech-pill">📦 helm charts & heartache</span>
+      <span class="tech-pill">🐛 features that became bugs</span>
+      <span class="tech-pill">☁ deploying dreams to production</span>
+      <span class="tech-pill">🐳 tiny containers, huge emotions</span>
+      <span class="tech-pill">⚙ terraform: push & pray</span>
+      <span class="tech-pill">🐧 surviving on grep & caffeine</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="pg-header">
+    <p class="pg-eyebrow">📌 pinned note to self</p>
+    <h2 class="pg-title">Who is <em>Pragati</em><span>?</span></h2>
+    <div class="deco-line">✦ ✦ ✦ ✦ ✦</div>
+  </div>
+  <div class="about-wrap">
+    <div class="about-grid">
+      <div>
+        <div class="scrap-card">
+          <div class="about-quote">The quietest engineers are often building the loudest systems.</div>
+          <p class="about-para">I am a calm, grounded thinker who spent 4.8 years in enterprise IT — writing COBOL, building APIs, deploying mainframe systems for some of the biggest banks in the world. And while doing all of that, I was secretly becoming a DevOps engineer at night.</p>
+          <p class="about-para">B.Tech in Electronics & Communication Engineering from Galgotia College of Engineering, Greater Noida. Graduate of 2019. Currently a Systems Engineer at TCS — working on CitiBank projects — and building my cloud skills every single day.</p>
+          <p class="about-para">No bootcamp. No mentor. Just documentation, YouTube, broken pipelines, and a lot of "why is this still not working" at 1am. That is the whole story.</p>
+          <div class="trait-row">
+            <div class="trait-item"><span class="trait-icon">🌱</span> Deep learner — goes to the root before touching the code</div>
+            <div class="trait-item"><span class="trait-icon">🎯</span> Disciplined — mainframe background built precision habits</div>
+            <div class="trait-item"><span class="trait-icon">✦</span> Self-reliant — no shortcuts, just grit and documentation</div>
+            <div class="trait-item"><span class="trait-icon">☕</span> Calm under pressure — debugging feels meditative to me</div>
+            <div class="trait-item"><span class="trait-icon">🔍</span> Honest about what I know and what I am still learning</div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card"><div class="stat-num">4.8</div><div class="stat-label">years in IT</div></div>
+            <div class="stat-card"><div class="stat-num">6+</div><div class="stat-label">GitHub projects</div></div>
+            <div class="stat-card"><div class="stat-num">💯</div><div class="stat-label">self-taught</div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="scrap-card">
+          <div class="skill-group-label">☁ cloud & infrastructure</div>
+          <div class="skill-item"><div class="skill-top"><span class="skill-name">AWS (EC2, S3, VPC, Lambda)</span><span class="skill-pct">75%</span></div><div class="skill-track"><div class="skill-fill" style="width:75%"></div></div></div>
+          <div class="skill-item"><div class="skill-top"><span class="skill-name">Terraform</span><span class="skill-pct">65%</span></div><div class="skill-track"><div class="skill-fill" style="width:65%"></div></div></div>
+          <div class="skill-item"><div class="skill-top"><span class="skill-name">Docker</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
+          <div class="skill-item"><div class="skill-top"><span class="skill-name">Kubernetes</span><span class="skill-pct">60%</span></div><div class="skill-track"><div class="skill-fill" style="width:60%"></div></div></div>
+
+          <div class="skill-group-label">🔁 devops tools</div>
+          <div class="skill-item"><div class="skill-top"><span class="skill-name">GitHub Actions / CI-CD</span><span class="skill-pct">72%</span></div><div class="skill-track"><div class="skill-fill sage" style="width:72%"></div></div></div>
+          <div class="skill-item"><div class="skill-top"><span class="skill-name">Linux & Bash Scripting</span><span class="skill-pct">78%</span></div><div class="skill-track"><div class="skill-fill sage" style="width:78%"></div></div></div>
+          <div class="skill-item"><div class="skill-top"><span class="skill-name">GIT & Version Control</span><span class="skill-pct">80%</span></div><div class="skill-track"><div class="skill-fill olive" style="width:80%"></div></div></div>
+
+          <div class="skill-group-label">🖥 mainframe (professional)</div>
+          <div class="skill-item"><div class="skill-top"><span class="skill-name">COBOL / JCL / VSAM / DB2</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-fill brown" style="width:92%"></div></div></div>
+          <div class="skill-item"><div class="skill-top"><span class="skill-name">CICS / API Building / Swagger</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill brown" style="width:85%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WORK & EDUCATION ═══ -->
+<section id="work">
+  <div class="pg-header">
+    <p class="pg-eyebrow">💼 career receipts</p>
+    <h2 class="pg-title"><em>Places</em> <span>that paid me</span></h2>
+    <div class="deco-line">✦ ✦ ✦ ✦ ✦</div>
+  </div>
+  <div class="work-wrap">
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-period">Dec 2022 — Present ✦ current</div>
+          <div class="tl-role">Systems Engineer</div>
+          <div class="tl-org">Tata Consultancy Services (TCS) ✦ Thane, Maharashtra</div>
+          <div class="tl-desc">
+            Working on enterprise banking systems for <strong>CitiBank</strong>. Built COBOL programs for balance mismatch detection — fetching account balances via cursor, comparing three-way values, generating reports for business teams. Also worked on instant cashback feature for debit cards: batch processing daily transactions, calculating cashback points, applying minimum spend thresholds, and building APIs so customers can view cashback via the MBOL mobile app (SAR/AAR/Swagger files, tested via SoapUI).
+          </div>
+          <div class="tl-tags">
+            <span class="tl-tag">COBOL</span><span class="tl-tag">JCL</span>
+            <span class="tl-tag">DB2</span><span class="tl-tag">API Building</span>
+            <span class="tl-tag">Swagger</span><span class="tl-tag">SoapUI</span>
+            <span class="tl-tag rust-tag">CitiBank project</span><span class="tl-tag rust-tag">TCS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <div class="tl-period">Nov 2019 — Dec 2022</div>
+          <div class="tl-role">Associate Developer</div>
+          <div class="tl-org">Cognizant Technology Solutions ✦ Chennai</div>
+          <div class="tl-desc">
+            Worked on <strong>Manulife</strong> — a leading international financial services group. Part of the development, testing, and automation team. Built and maintained APIs and services, handled production deployments, maintenance tasks and enhancement projects. Used Z/OS Connect for mainframe API integration, ESB for messaging, JIRA for project tracking, and Postman for API testing.
+          </div>
+          <div class="tl-tags">
+            <span class="tl-tag">COBOL</span><span class="tl-tag">JCL</span>
+            <span class="tl-tag">VSAM</span><span class="tl-tag">DB2</span>
+            <span class="tl-tag">CICS</span><span class="tl-tag">Z/OS Connect</span>
+            <span class="tl-tag">Postman</span><span class="tl-tag">ESB</span>
+            <span class="tl-tag rust-tag">Manulife project</span><span class="tl-tag rust-tag">Cognizant</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="tl-item">
+        <div class="tl-dot edu-dot"></div>
+        <div class="tl-card edu-card">
+          <div class="tl-period" style="color:var(--olive)">2015 — 2019 ✦ 📚 education</div>
+          <div class="tl-role">B.Tech in Electronics & Communication Engineering</div>
+          <div class="tl-org" style="color:var(--sage)">Galgotia College of Engineering & Technology ✦ Greater Noida, UP</div>
+          <div class="tl-desc">
+            Engineering graduate — built the foundation of system thinking, networking, and problem solving that now makes cloud concepts click faster. The discipline of engineering school + the precision of mainframe work = a DevOps engineer who actually understands why things work (and why they break).
+          </div>
+          <div class="tl-tags">
+            <span class="tl-tag" style="background:var(--sage4);color:var(--olive);border-color:var(--sage3)">B.Tech ECE</span>
+            <span class="tl-tag" style="background:var(--sage4);color:var(--olive);border-color:var(--sage3)">Engineering Graduate</span>
+            <span class="tl-tag" style="background:var(--sage4);color:var(--olive);border-color:var(--sage3)">Greater Noida</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEVOPS JOURNEY ═══ -->
+<section id="journey">
+  <div class="pg-header">
+    <p class="pg-eyebrow">☁ a very honest story</p>
+    <h2 class="pg-title">From <em>COBOL</em> <span>to Cloud</span></h2>
+    <div class="deco-line">✦ ✦ ✦ ✦ ✦</div>
+  </div>
+  <div class="journey-wrap">
+    <div class="journey-note">
+      I did not plan any of this. I came from mainframes — COBOL, JCL, batch jobs at 3am. One evening I watched a video about Docker containers and thought: wait, this is how modern systems should work. That one thought changed everything. Here is the real, unfiltered version of how I went from Z/OS to Kubernetes, one terminal session at a time.
+    </div>
+
+    <div class="timeline-horizontal">
+      <div class="phase-card">
+        <div class="phase-num">01</div>
+        <div class="phase-era">2019–2022 ✦ the grind era</div>
+        <div class="phase-title">Mainframe life begins</div>
+        <div class="phase-body">Started at Cognizant, then TCS. Learned to think in systems — batch jobs, cursor logic, enterprise-grade precision. COBOL taught me that bugs in production are not jokes. This phase made me disciplined.</div>
+        <div class="phase-tools"><span class="tool-tag">COBOL</span><span class="tool-tag">JCL</span><span class="tool-tag">DB2</span><span class="tool-tag">CICS</span><span class="tool-tag">API Building</span></div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">02</div>
+        <div class="phase-era">2023 ✦ the spark</div>
+        <div class="phase-title">One Docker video at 11pm</div>
+        <div class="phase-body">Stumbled onto a Docker tutorial. One video became ten. Opened AWS free tier at midnight on a Wednesday. Created my first EC2 instance. It was just a tiny Linux server — but it felt like magic. I have not stopped since.</div>
+        <div class="phase-tools"><span class="tool-tag">Docker basics</span><span class="tool-tag">AWS free tier</span><span class="tool-tag">Linux terminal</span></div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">03</div>
+        <div class="phase-era">2023–2024 ✦ the painful learning</div>
+        <div class="phase-title">Self-teaching everything from scratch</div>
+        <div class="phase-body">No bootcamp. No mentor. Just documentation and YouTube. Learned Linux deeply — file permissions, shell scripting, process management. Broke things. Fixed them. Broke them again. Kept going. "Permission denied" became almost a greeting.</div>
+        <div class="phase-tools"><span class="tool-tag">Linux</span><span class="tool-tag">Bash</span><span class="tool-tag">AWS EC2/S3/VPC</span><span class="tool-tag">Git</span></div>
+      </div>
+      <div class="phase-card">
+        <div class="phase-num">04</div>
+        <div class="phase-era">2024–2025 ✦ building for real</div>
+        <div class="phase-title">Real projects. Real pain. Real growth.</div>
+        <div class="phase-body">Built a system performance monitoring tool. Set up CI/CD pipelines. Deployed web apps on EC2. Created Docker projects. All pushed to GitHub. Not just following tutorials — actually building. Every project taught me something tutorials could not.</div>
+        <div class="phase-tools"><span class="tool-tag">Docker</span><span class="tool-tag">AWS EC2</span><span class="tool-tag">GitHub Actions</span><span class="tool-tag">CI/CD</span><span class="tool-tag">Shell Scripting</span></div>
+      </div>
+    </div>
+
+    <!-- funny devops section -->
+    <div class="funny-devops">
+      <div class="funny-title">✦ meanwhile, in my DevOps life ✦</div>
+      <div class="funny-grid">
+        <div class="funny-card">
+          <div class="funny-icon">☁</div>
+          <div class="funny-label">CI/CD section</div>
+          <div class="funny-desc">push to main and pray</div>
+        </div>
+        <div class="funny-card">
+          <div class="funny-icon">🐳</div>
+          <div class="funny-label">Docker section</div>
+          <div class="funny-desc">tiny containers, huge emotions</div>
+        </div>
+        <div class="funny-card">
+          <div class="funny-icon">🐧</div>
+          <div class="funny-label">Linux section</div>
+          <div class="funny-desc">surviving on grep & caffeine</div>
+        </div>
+        <div class="funny-card">
+          <div class="funny-icon">💸</div>
+          <div class="funny-label">AWS section</div>
+          <div class="funny-desc">financially supporting amazon web services</div>
+        </div>
+        <div class="funny-card">
+          <div class="funny-icon">🐛</div>
+          <div class="funny-label">bugs section</div>
+          <div class="funny-desc">features that accidentally became bugs</div>
+        </div>
+        <div class="funny-card">
+          <div class="funny-icon">⚙</div>
+          <div class="funny-label">terraform section</div>
+          <div class="funny-desc">currently containerizing my life decisions</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects">
+  <div class="pg-header">
+    <p class="pg-eyebrow">🛠 things i built instead of resting</p>
+    <h2 class="pg-title"><em>Real</em> <span>Projects</span></h2>
+    <div class="deco-line">✦ ✦ ✦ ✦ ✦</div>
+  </div>
+  <div class="projects-wrap">
+    <p class="project-intro">all real. all on github. all built from scratch. some worked first try (lies). click any project to visit the repo ✦</p>
+    <div class="projects-grid">
+
+      <!-- PROJECT 1: System Performance Monitoring -->
+      <div class="proj-card" onclick="window.open('https://github.com/Pragati2708/System-Performance-monitoring-Tool','_blank')">
+        <div class="proj-header">
+          <div class="proj-icon-row">
+            <span class="proj-emoji">📊</span>
+            <div class="proj-badges">
+              <span class="proj-badge badge-shell">Shell</span>
+              <span class="proj-badge badge-linux">Linux</span>
+            </div>
+          </div>
+          <div class="proj-title">System Performance Monitoring Tool</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-desc">A bash-scripted tool that monitors CPU usage, RAM usage, and storage usage of a server in real-time. Includes backup-and-cleanup scripts. Real DevOps work — the kind that actually runs on prod servers.</div>
+          <div class="flow-diagram">
+            <div style="font-family:var(--handwrite);font-size:0.72rem;color:var(--text3);margin-bottom:0.5rem;text-align:center;">how it works ↓</div>
+            <div class="flow-steps">
+              <div class="flow-step sage-step">Server</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">Bash Script</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step highlight">Monitor CPU<br>RAM Storage</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">Alert / Report</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step sage-step">Cleanup</div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <a href="https://github.com/Pragati2708/System-Performance-monitoring-Tool" target="_blank" class="github-link" onclick="event.stopPropagation()">⟶ view on github</a>
+          <span class="proj-lang">Shell 100%</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: Multi-env CI/CD Pipeline -->
+      <div class="proj-card" onclick="window.open('https://github.com/Pragati2708/multi-env-ci-cd-pipeline','_blank')">
+        <div class="proj-header">
+          <div class="proj-icon-row">
+            <span class="proj-emoji">🔁</span>
+            <div class="proj-badges">
+              <span class="proj-badge badge-cicd">CI/CD</span>
+              <span class="proj-badge badge-docker">Multi-env</span>
+            </div>
+          </div>
+          <div class="proj-title">Multi-Environment CI/CD Pipeline</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-desc">Implements a complete multi-environment CI/CD pipeline — dev, staging, and production environments with automated build, test, and deploy stages. Push to main and it just works (mostly).</div>
+          <div class="flow-diagram">
+            <div style="font-family:var(--handwrite);font-size:0.72rem;color:var(--text3);margin-bottom:0.5rem;text-align:center;">pipeline flow ↓</div>
+            <div class="flow-steps">
+              <div class="flow-step sage-step">Code Push</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">Build</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">Test</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step highlight">Dev → Staging</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step sage-step">Production ✓</div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <a href="https://github.com/Pragati2708/multi-env-ci-cd-pipeline" target="_blank" class="github-link" onclick="event.stopPropagation()">⟶ view on github</a>
+          <span class="proj-lang">CI/CD</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: Docker Projects -->
+      <div class="proj-card" onclick="window.open('https://github.com/Pragati2708/Docker_projects','_blank')">
+        <div class="proj-header">
+          <div class="proj-icon-row">
+            <span class="proj-emoji">🐳</span>
+            <div class="proj-badges">
+              <span class="proj-badge badge-docker">Docker</span>
+            </div>
+          </div>
+          <div class="proj-title">Docker Projects Collection</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-desc">A dedicated repository of Docker assignments and projects — containerizing applications, writing Dockerfiles, managing images and containers. Every project here came with a learning (and usually a headache).</div>
+          <div class="flow-diagram">
+            <div style="font-family:var(--handwrite);font-size:0.72rem;color:var(--text3);margin-bottom:0.5rem;text-align:center;">docker lifecycle ↓</div>
+            <div class="flow-steps">
+              <div class="flow-step sage-step">Dockerfile</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">docker build</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step highlight">Image ✓</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">docker run</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step sage-step">Container 🐳</div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <a href="https://github.com/Pragati2708/Docker_projects" target="_blank" class="github-link" onclick="event.stopPropagation()">⟶ view on github</a>
+          <span class="proj-lang">Docker</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 4: Linux Zero to DevOps -->
+      <div class="proj-card" onclick="window.open('https://github.com/Pragati2708/linux_zero_to_devops','_blank')">
+        <div class="proj-header">
+          <div class="proj-icon-row">
+            <span class="proj-emoji">🐧</span>
+            <div class="proj-badges">
+              <span class="proj-badge badge-shell">Shell</span>
+              <span class="proj-badge badge-linux">Linux</span>
+            </div>
+          </div>
+          <div class="proj-title">Linux Zero to DevOps</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-desc">Collection of Linux and Bash scripting solutions with real-world DevOps use cases and interview-focused implementations. Built this as I learned — raw, honest, and incredibly useful.</div>
+          <div class="flow-diagram">
+            <div style="font-family:var(--handwrite);font-size:0.72rem;color:var(--text3);margin-bottom:0.5rem;text-align:center;">learning path ↓</div>
+            <div class="flow-steps">
+              <div class="flow-step sage-step">Zero Linux</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">File System</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">Bash Scripts</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step highlight">DevOps Ready</div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <a href="https://github.com/Pragati2708/linux_zero_to_devops" target="_blank" class="github-link" onclick="event.stopPropagation()">⟶ view on github</a>
+          <span class="proj-lang">Shell 100%</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 5: AWS EC2 -->
+      <div class="proj-card" onclick="window.open('https://github.com/Pragati2708/AWS-EC2-Intance','_blank')">
+        <div class="proj-header">
+          <div class="proj-icon-row">
+            <span class="proj-emoji">☁</span>
+            <div class="proj-badges">
+              <span class="proj-badge badge-aws">AWS</span>
+              <span class="proj-badge badge-js">JavaScript</span>
+            </div>
+          </div>
+          <div class="proj-title">Web App Deployment on AWS EC2</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-desc">Deployed a full web application on an AWS EC2 instance. Set up the instance, configured security groups, installed dependencies, and got the app running live on the cloud. My first real cloud deployment.</div>
+          <div class="flow-diagram">
+            <div style="font-family:var(--handwrite);font-size:0.72rem;color:var(--text3);margin-bottom:0.5rem;text-align:center;">deployment flow ↓</div>
+            <div class="flow-steps">
+              <div class="flow-step sage-step">AWS Console</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">Launch EC2</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">SSH In</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step highlight">Deploy App</div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step sage-step">Live ✓</div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <a href="https://github.com/Pragati2708/AWS-EC2-Intance" target="_blank" class="github-link" onclick="event.stopPropagation()">⟶ view on github</a>
+          <span class="proj-lang">JavaScript</span>
+        </div>
+      </div>
+
+      <!-- PROJECT 6: Docker Projects (Dcoker) -->
+      <div class="proj-card" onclick="window.open('https://github.com/Pragati2708/Dcoker_projects','_blank')">
+        <div class="proj-header">
+          <div class="proj-icon-row">
+            <span class="proj-emoji">📦</span>
+            <div class="proj-badges">
+              <span class="proj-badge badge-docker">Docker</span>
+              <span class="proj-badge badge-js">JavaScript</span>
+            </div>
+          </div>
+          <div class="proj-title">Docker Projects — Advanced Experiments</div>
+        </div>
+        <div class="proj-body">
+          <div class="proj-desc">More Docker projects — multi-container setups, networking between containers, volume management, and more complex containerization experiments. Where the real Docker education happened.</div>
+          <div class="flow-diagram">
+            <div style="font-family:var(--handwrite);font-size:0.72rem;color:var(--text3);margin-bottom:0.5rem;text-align:center;">multi-container setup ↓</div>
+            <div class="flow-steps">
+              <div class="flow-step sage-step">App Container</div>
+              <div class="flow-arrow">⇄</div>
+              <div class="flow-step highlight">Docker Network</div>
+              <div class="flow-arrow">⇄</div>
+              <div class="flow-step sage-step">DB Container</div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <a href="https://github.com/Pragati2708/Dcoker_projects" target="_blank" class="github-link" onclick="event.stopPropagation()">⟶ view on github</a>
+          <span class="proj-lang">JavaScript</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ MISTAKES & LESSONS ═══ -->
+<section id="mistakes">
+  <div class="pg-header">
+    <p class="pg-eyebrow">🌱 the real curriculum</p>
+    <h2 class="pg-title"><em>Oops</em> <span>& Lessons</span></h2>
+    <div class="deco-line">✦ ✦ ✦ ✦ ✦</div>
+  </div>
+  <div class="mistakes-wrap">
+    <p class="mistakes-intro">most portfolios show the wins. this one shows everything. because the mistakes are where the actual learning lives. these are real, raw, and mine. 🌿</p>
+
+    <div class="mistake-card">
+      <div class="mistake-icon-box">🔥</div>
+      <div>
+        <div class="mistake-cat">devops fail ✦ aws</div>
+        <div class="mistake-title">I accidentally made an S3 bucket public for 45 minutes</div>
+        <div class="mistake-desc">Was setting up a static site on AWS. Toggled the wrong setting. Realized 45 minutes later that some test files were publicly accessible. My heart has never beaten faster in my life.</div>
+        <div class="mistake-lesson">💡 Lesson: Enable S3 Block Public Access at the account level FIRST. IAM policies and bucket policies are not the same thing. Always.</div>
+      </div>
+    </div>
+
+    <div class="mistake-card">
+      <div class="mistake-icon-box">💥</div>
+      <div>
+        <div class="mistake-cat">devops fail ✦ funny & painful</div>
+        <div class="mistake-title">I destroyed the wrong CI/CD environment</div>
+        <div class="mistake-desc">Was cleaning up a dev pipeline setup. Ran the wrong teardown command on what I thought was dev. It was not dev. Two weeks of config: gone. I sat very still for a long time after that.</div>
+        <div class="mistake-lesson">💡 Lesson: Always print your current workspace/environment before any destructive command. Read the plan output three times. Then read it again.</div>
+      </div>
+    </div>
+
+    <div class="mistake-card">
+      <div class="mistake-icon-box">🤐</div>
+      <div>
+        <div class="mistake-cat">career mistake ✦ personal growth</div>
+        <div class="mistake-title">I waited almost a year to push my work to GitHub</div>
+        <div class="mistake-desc">For nearly a year I was building things but keeping everything local. I thought my work was not "good enough" yet. I was wrong. Perfectionism is just fear with better PR.</div>
+        <div class="mistake-lesson">💡 Lesson: Done and visible beats perfect and hidden. Push to GitHub even when it's messy. You learn faster when others can see the work.</div>
+      </div>
+    </div>
+
+    <div class="mistake-card">
+      <div class="mistake-icon-box">😔</div>
+      <div>
+        <div class="mistake-cat">personal growth ✦ mindset</div>
+        <div class="mistake-title">I compared my journey to people with mentors and bootcamps</div>
+        <div class="mistake-desc">For a while I felt behind. Everyone seemed to know more, move faster, have more support. I was self-teaching from YouTube and documentation. It felt lonely and unfair some nights.</div>
+        <div class="mistake-lesson">💡 Lesson: Self-taught is not slower — it is deeper. You understand the "why" because you had to find it yourself. That is your actual unfair advantage.</div>
+      </div>
+    </div>
+
+    <div class="mistake-card">
+      <div class="mistake-icon-box">🐳</div>
+      <div>
+        <div class="mistake-cat">technical mistake ✦ docker</div>
+        <div class="mistake-title">My Docker container kept restarting and I had no idea why</div>
+        <div class="mistake-desc">Spent an entire weekend debugging a container that kept crashing on startup. Checked logs a hundred times. The issue? One ENV variable was missing. One single missing variable. The logs never clearly said so.</div>
+        <div class="mistake-lesson">💡 Lesson: Always check ENV variables and run docker logs with --follow first. Then check the Dockerfile. Then cry. Then check ENV variables again.</div>
+      </div>
+    </div>
+
+    <div class="mistake-card">
+      <div class="mistake-icon-box">🌱</div>
+      <div>
+        <div class="mistake-cat">funny mistake ✦ linux</div>
+        <div class="mistake-title">I ran rm -rf in the wrong directory</div>
+        <div class="mistake-desc">I was cleaning up some test files on a lab server. I was in the wrong directory. Gone. All of it. Just a clean, empty directory where my project used to be. I learned about backups that day.</div>
+        <div class="mistake-lesson">💡 Lesson: Always pwd before rm. Always. Non-negotiable. Also: backup scripts exist for a reason (I now build them as projects).</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ BLOG ═══ -->
+<section id="blog">
+  <div class="pg-header">
+    <p class="pg-eyebrow">✍ pages from my diary</p>
+    <h2 class="pg-title"><em>Tiny</em> <span>Thoughts</span></h2>
+    <div class="deco-line">✦ ✦ ✦ ✦ ✦</div>
+  </div>
+  <div class="blog-wrap">
+    <p class="blog-intro">some things I'm okay sharing with the world. other things are just mine — written for myself first. if a blog is locked, you can ask me. I'll decide if I want to let you in. no hard feelings either way 🌿</p>
+    <div class="blog-grid">
+
+      <div class="blog-open-card">
+        <div class="blog-cat">☁ devops & learning</div>
+        <div class="blog-title">Why I chose DevOps when no one around me understood what it even was</div>
+        <div class="blog-excerpt">When I told people I was learning cloud infrastructure, most nodded politely and changed the subject. Here is why I kept going anyway...</div>
+        <div class="blog-foot"><span class="blog-date">Apr 2025</span><button class="read-btn-sm">read →</button></div>
+      </div>
+
+      <div class="blog-open-card">
+        <div class="blog-cat">💼 career</div>
+        <div class="blog-title">What mainframe actually taught me about DevOps (it's a superpower)</div>
+        <div class="blog-excerpt">Everyone assumes mainframe is dead-end thinking. I think it gave me something most cloud engineers don't have — precision under pressure...</div>
+        <div class="blog-foot"><span class="blog-date">Mar 2025</span><button class="read-btn-sm">read →</button></div>
+      </div>
+
+      <div class="blog-open-card">
+        <div class="blog-cat">🐳 technical</div>
+        <div class="blog-title">The honest beginner's guide to Docker — written by someone who broke everything first</div>
+        <div class="blog-excerpt">No gatekeeping. Just real talk about what Docker is, why it hurts at first, and why it starts making beautiful sense...</div>
+        <div class="blog-foot"><span class="blog-date">Feb 2025</span><button class="read-btn-sm">read →</button></div>
+      </div>
+
+      <!-- LOCKED BLOGS -->
+      <div class="blog-locked-card">
+        <div class="lock-banner">🔒 private blog</div>
+        <div class="locked-title">The night I cried because a deployment failed and I didn't know why</div>
+        <div class="locked-preview">It was 2am. Everything had been working fine and then suddenly nothing was. I had no answers and I just...</div>
+        <div class="no-access-box">
+          <div class="no-access-main">🚫 sorry, you don't have access to read this.</div>
+          <div class="no-access-sub">this is a personal blog. ask Pragati for access — she'll decide if she wants to let you in.</div>
+        </div>
+        <button class="ask-access-btn" onclick="openModal('The night I cried because a deployment failed and I didn't know why')">✉ ask for access</button>
+      </div>
+
+      <div class="blog-locked-card">
+        <div class="lock-banner">🔒 private blog</div>
+        <div class="locked-title">What it actually feels like to be a woman self-teaching tech in India</div>
+        <div class="locked-preview">Nobody talks about this part. The doubt that comes not just from yourself but from the people around you who mean well but...</div>
+        <div class="no-access-box">
+          <div class="no-access-main">🚫 sorry, you don't have access to read this.</div>
+          <div class="no-access-sub">this is a personal blog. ask Pragati for access — she'll decide if she wants to let you in.</div>
+        </div>
+        <button class="ask-access-btn" onclick="openModal('What it actually feels like to be a woman self-teaching tech in India')">✉ ask for access</button>
+      </div>
+
+      <div class="blog-locked-card">
+        <div class="lock-banner">🔒 private blog</div>
+        <div class="locked-title">The afternoon I almost gave up on switching to DevOps entirely</div>
+        <div class="locked-preview">There was one specific afternoon where I had applied to so many roles and heard nothing back. I sat with my laptop closed...</div>
+        <div class="no-access-box">
+          <div class="no-access-main">🚫 sorry, you don't have access to read this.</div>
+          <div class="no-access-sub">this is a personal blog. ask Pragati for access — she'll decide if she wants to let you in.</div>
+        </div>
+        <button class="ask-access-btn" onclick="openModal('The afternoon I almost gave up on switching to DevOps entirely')">✉ ask for access</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</div><!-- end .site -->
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/Pragati2708" target="_blank" class="footer-link">🐙 github</a>
+    <a href="https://www.linkedin.com/in/pragati-singh-746923161/" target="_blank" class="footer-link">💼 linkedin</a>
+    <a href="mailto:Pragatisingh2708@gmail.com" class="footer-link">✉ email me</a>
+  </div>
+  <p>
+    built with ☕ confusion & ctrl+c ctrl+v by <strong>Pragati Singh</strong><br>
+    99 little bugs in the code, take one down, patch it around, 127 little bugs in the code 🌿
+  </p>
+</footer>
+
+<!-- ACCESS REQUEST MODAL -->
+<div class="modal-bg" id="blogModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-icon">🔒</div>
+    <div class="modal-title">ask for access</div>
+    <div class="modal-sub">this blog is personal. tell Pragati a little about yourself and why you'd like to read it. she'll get back to you over email.</div>
+    <div class="modal-blog-name" id="modalBlogLabel"></div>
+    <div id="modalForm">
+      <div><label class="modal-label">your name</label><input class="modal-input" id="reqName" type="text" placeholder="your full name"></div>
+      <div><label class="modal-label">your email</label><input class="modal-input" id="reqEmail" type="email" placeholder="your@email.com"></div>
+      <div><label class="modal-label">why do you want to read this?</label><textarea class="modal-input" id="reqWhy" placeholder="a little context helps a lot..."></textarea></div>
+      <button class="modal-submit" onclick="sendRequest()">send request ✦</button>
+    </div>
+    <div class="modal-success" id="modalSuccess" style="display:none">
+      ✨ your request has been sent to Pragati!<br>she will reply over email if she wants to share it 🌿
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (btn && btn.classList) btn.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function openModal(title) {
+  document.getElementById('modalBlogLabel').textContent = '\u201C' + title + '\u201D';
+  document.getElementById('reqName').value = '';
+  document.getElementById('reqEmail').value = '';
+  document.getElementById('reqWhy').value = '';
+  document.getElementById('modalForm').style.display = 'block';
+  document.getElementById('modalSuccess').style.display = 'none';
+  document.getElementById('blogModal').classList.add('open');
+}
+
+function closeModal() {
+  document.getElementById('blogModal').classList.remove('open');
+}
+
+function sendRequest() {
+  const name = document.getElementById('reqName').value.trim();
+  const email = document.getElementById('reqEmail').value.trim();
+  const why = document.getElementById('reqWhy').value.trim();
+  const blog = document.getElementById('modalBlogLabel').textContent;
+  if (!name || !email) { alert('please fill in your name and email ✿'); return; }
+  const subject = encodeURIComponent('Blog Access Request — ' + blog);
+  const body = encodeURIComponent('Hi Pragati,\n\nName: ' + name + '\nEmail: ' + email + '\n\nBlog: ' + blog + '\n\nWhy I want to read this:\n' + (why || 'no reason given') + '\n\nThank you!');
+  window.open('mailto:Pragatisingh2708@gmail.com?subject=' + subject + '&body=' + body);
+  document.getElementById('modalForm').style.display = 'none';
+  document.getElementById('modalSuccess').style.display = 'block';
+}
+
+document.getElementById('blogModal').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+</script>
+</body>
+</html>
