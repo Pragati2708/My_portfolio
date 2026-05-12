@@ -1,0 +1,34 @@
+name: Deploy Portfolio
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          cd ~/portfolio
+
+          git pull origin main
+
+          docker stop portfolio || true
+          docker rm portfolio || true
+
+          docker build -t portfolio-site .
+
+          docker run -d --name portfolio -p 8080:80 portfolio-site
+
+          sudo systemctl restart nginx
