@@ -24,11 +24,14 @@ jobs:
 
           git pull origin main
 
-          docker stop portfolio || true
-          docker rm portfolio || true
-
           docker build -t portfolio-site .
 
-          docker run -d --name portfolio -p 8080:80 portfolio-site
+          docker rm -f portfolio || true
+
+          docker run -d \
+            --restart unless-stopped \
+            --name portfolio \
+            -p 8080:80 \
+            portfolio-site
 
           sudo systemctl restart nginx
