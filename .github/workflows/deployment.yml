@@ -24,14 +24,8 @@ jobs:
 
           git pull origin main
 
-          docker build -t portfolio-site .
+          docker compose down
 
-          docker rm -f portfolio || true
-
-          docker run -d \
-            --restart unless-stopped \
-            --name portfolio \
-            -p 8080:80 \
-            portfolio-site
+          docker compose up -d --build
 
           sudo systemctl restart nginx
