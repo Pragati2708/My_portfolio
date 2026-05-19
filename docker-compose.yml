@@ -26,3 +26,10 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000"
+  node-exporter:
+     image: prom/node-exporter
+     container_name: node-exporter
+     restart: unless-stopped
+
+     ports:
+      - "9100:9100"

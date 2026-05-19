@@ -1,0 +1,39 @@
+- hosts: web
+  become: yes
+
+  tasks:
+
+    - name: Update packages
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Install Git
+      apt:
+        name: git
+        state: present
+
+    - name: Install Docker Compose
+      apt:
+        name: docker-compose
+        state: present
+
+    - name: Start Docker
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Clone Repository
+      git:
+        repo: https://github.com/Pragati2708/My_portfolio.git
+        dest: /home/ubuntu/portfolio-project
+
+    - name: Run Docker Compose
+      shell: |
+        cd /home/ubuntu/portfolio-project
+        docker compose up -d --build
