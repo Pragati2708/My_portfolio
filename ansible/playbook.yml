@@ -36,4 +36,5 @@
     - name: Run Docker Compose
       shell: |
         cd /home/ubuntu/portfolio-project
+        docker compose down
         docker compose up -d --build
