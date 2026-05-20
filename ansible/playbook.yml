@@ -32,9 +32,13 @@
       git:
         repo: https://github.com/Pragati2708/My_portfolio.git
         dest: /home/ubuntu/portfolio-project
+        version: main
+
+        become_user: ubuntu 
 
     - name: Run Docker Compose
       shell: |
         cd /home/ubuntu/portfolio-project
         docker compose down
         docker compose up -d --build
+      become_user: ubuntu
