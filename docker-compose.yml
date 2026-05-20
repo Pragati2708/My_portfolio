@@ -21,11 +21,16 @@ services:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
 
   grafana:
-    image: grafana/grafana
-    container_name: grafana
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
+  image: grafana/grafana
+  container_name: grafana
+  restart: unless-stopped
+
+  ports:
+    - "3000:3000"
+
+  volumes:
+    - grafana-data:/var/lib/grafana
+    
   node-exporter:
      image: prom/node-exporter
      container_name: node-exporter
@@ -33,3 +38,6 @@ services:
 
      ports:
       - "9100:9100"
+  volumes:
+        grafana-data:
+    
