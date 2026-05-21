@@ -1,223 +1,594 @@
-“Challenges Faced & Fixes Implemented”
+# DevOps Portfolio Project
 
-1. Docker Compose & Container Issues
-Issue: Port conflict while starting containers.
-Error: Bind for 0.0.0.0:8080 failed: port is already allocated
-Root Cause: Another container was already using port 8080.
+## Project Overview
 
-Fix: Identified the running container using docker ps
-Removed old container
-Rebuilt Docker Compose setup
-Learning
+This project demonstrates a complete end-to-end DevOps implementation using:
+
+* Terraform for Infrastructure as Code
+* AWS EC2 for cloud infrastructure
+* Ansible for server configuration automation
+* Docker & Docker Compose for containerization
+* GitHub Actions for CI/CD automation
+* Prometheus for monitoring
+* Grafana for observability dashboards
+* Nginx for web serving
+* HTTPS & Domain integration
+
+The goal of this project was not only to deploy an application, but also to understand and troubleshoot real-world DevOps challenges while building a production-style deployment pipeline.
+
+---
+
+# Final Architecture
+
+```text
+Terraform
+   ↓
+AWS EC2
+   ↓
+Ansible
+   ↓
+Docker Compose
+   ↓
+Portfolio Application
+   ↓
+Prometheus + Grafana
+   ↓
+GitHub Actions CI/CD
+   ↓
+HTTPS + Domain
+```
+
+---
+
+# Technologies Used
+
+| Category                 | Tools                   |
+| ------------------------ | ----------------------- |
+| Cloud                    | AWS EC2                 |
+| IaC                      | Terraform               |
+| Configuration Management | Ansible                 |
+| Containerization         | Docker, Docker Compose  |
+| CI/CD                    | GitHub Actions          |
+| Monitoring               | Prometheus              |
+| Visualization            | Grafana                 |
+| Web Server               | Nginx                   |
+| Version Control          | Git & GitHub            |
+| SSL                      | Certbot & Let's Encrypt |
+
+---
+
+# Key Features Implemented
+
+* Automated EC2 provisioning using Terraform
+* Automated server configuration using Ansible
+* Dockerized portfolio application
+* Monitoring stack with Prometheus & Grafana
+* CI/CD deployment pipeline using GitHub Actions
+* Domain & HTTPS integration
+* Persistent Grafana dashboards using Docker volumes
+* Elastic IP usage for stable infrastructure
+
+---
+
+# Project Structure
+
+```text
+portfolio-project/
+│
+├── ansible/
+│   ├── inventory
+│   ├── inventory.example
+│   └── playbook.yml
+│
+├── terraform/
+│   └── main.tf
+│
+├── monitoring/
+│   └── prometheus.yml
+│
+├── .github/
+│   └── workflows/
+│       └── deploy.yml
+│
+├── docker-compose.yml
+├── Dockerfile
+├── index.html
+└── .gitignore
+```
+
+---
+
+# Monitoring Dashboard Metrics
+
+Implemented Grafana dashboard panels for:
+
+* CPU Usage
+* Memory Usage
+* Disk Usage
+* Network Traffic
+* Prometheus Health
+* Node Exporter Health
+* Server Uptime
+
+---
+
+# Challenges Faced & Fixes Implemented
+
+## 1. Docker Port Conflict
+
+### Issue
+
+Containers failed to start due to port conflicts.
+
+### Error
+
+```text
+Bind for 0.0.0.0:8080 failed: port is already allocated
+```
+
+### Root Cause
+
+Another container was already using port 8080.
+
+### Fix
+
+* Identified running containers using:
+
+```bash
+docker ps
+```
+
+* Removed conflicting container:
+
+```bash
+docker rm -f <container-name>
+```
+
+### Learning
 
 Only one container/service can bind to a host port at a time.
 
-2. Multiple Deployment Folders on EC2
-Issue
+---
 
-Application changes were not reflecting after successful CI/CD.
+## 2. Multiple Deployment Folders on EC2
 
-Root Cause
+### Issue
 
-Two different project folders existed:
+Website changes were not reflecting after successful CI/CD deployment.
 
+### Root Cause
+
+Two different folders existed on EC2:
+
+```text
 ~/portfolio
 ~/portfolio-project
+```
 
-GitHub Actions deployed old folder while latest code existed in another folder.
+GitHub Actions was deploying the old folder while updated code existed in another folder.
 
-Fix
-Standardized deployment path to:
+### Fix
+
+* Standardized deployment path to:
+
+```text
 ~/portfolio-project
-Updated deployment workflow.
-Learning
+```
+
+* Updated GitHub Actions workflow.
+
+### Learning
 
 Deployment paths must remain consistent across automation tools.
 
-3. GitHub Actions Success but Old Website Visible
-Issue
+---
 
-GitHub Actions pipeline showed success but website displayed old code.
+## 3. GitHub Actions Successful but Website Still Showing Old Code
 
-Root Cause
-Wrong deployment directory
-Old Docker images
-Docker cache
-Fix
-Cleaned old containers/images
-Rebuilt images using:
+### Issue
+
+GitHub Actions pipeline showed success but application changes were not visible.
+
+### Root Cause
+
+* Wrong deployment folder
+* Old Docker images
+* Docker cache issues
+
+### Fix
+
+* Cleaned old images and containers
+* Rebuilt Docker images using:
+
+```bash
 docker compose build --no-cache
-Learning
+```
 
-Successful CI/CD does not guarantee latest application version is running.
+### Learning
 
-4. Grafana Dashboards Not Persisting
-Issue
+A successful CI/CD pipeline does not always guarantee that the latest application version is running.
 
-Dashboards disappeared after container recreation.
+---
 
-Root Cause
+## 4. Grafana Dashboards Getting Deleted
 
-Grafana container had no persistent Docker volume.
+### Issue
 
-Fix
+Grafana dashboards disappeared after container recreation.
 
-Added named volume:
+### Root Cause
 
+Grafana container did not use persistent Docker volumes.
+
+### Fix
+
+Added named volume in docker-compose.yml:
+
+```yaml
 volumes:
   - grafana-data:/var/lib/grafana
-Learning
+```
 
-Containers are ephemeral; persistent data must use Docker volumes.
+Added bottom volumes section:
 
-5. Docker Compose YAML Indentation Errors
-Issue
+```yaml
+volumes:
+  grafana-data:
+```
 
-Docker Compose failed because of invalid YAML structure.
+### Learning
 
-Root Cause
+Containers are ephemeral. Persistent data must use Docker volumes.
+
+---
+
+## 5. Docker Compose YAML Indentation Errors
+
+### Issue
+
+Docker Compose failed due to YAML structure issues.
+
+### Root Cause
 
 Incorrect indentation of:
 
-grafana service
-node-exporter
-volumes section
-Fix
+* Grafana service
+* Node exporter service
+* Volumes section
 
-Corrected YAML hierarchy and service alignment.
+### Fix
 
-Learning
+Corrected YAML indentation and hierarchy.
 
-YAML indentation is critical in DevOps configuration files.
+### Learning
 
-6. SSH Timeout in GitHub Actions
-Error
+YAML indentation is extremely important in DevOps configuration files.
+
+---
+
+## 6. SSH Timeout in GitHub Actions
+
+### Error
+
+```text
 dial tcp ***:22: i/o timeout
-Root Cause
+```
+
+### Root Cause
 
 EC2 instance was stopped.
 
-Fix
+### Fix
 
-Started EC2 instance and verified SSH connectivity.
+* Started EC2 instance
+* Verified SSH connectivity
 
-Learning
+### Learning
 
 CI/CD pipelines depend on infrastructure availability.
 
-7. Ansible SSH Host Verification Failure
-Error
+---
+
+## 7. Ansible SSH Host Verification Failure
+
+### Error
+
+```text
 Host key verification failed
-Root Cause
+```
+
+### Root Cause
 
 EC2 SSH fingerprint was not trusted locally.
 
-Fix
-Removed old SSH host entry
-Connected manually once using SSH
-Learning
+### Fix
+
+* Removed old SSH host entry
+* Connected manually once using SSH
+
+### Learning
 
 SSH host fingerprints are stored in:
 
+```text
 ~/.ssh/known_hosts
-8. PEM Key Path Issues
-Error
+```
+
+---
+
+## 8. PEM File Path & Permission Issues
+
+### Error
+
+```text
 Identity file not accessible
-Root Cause
+```
 
-PEM file was not inside .ssh directory.
+### Root Cause
 
-Fix
-Moved PEM into:
-~/.ssh/
+PEM file was not placed inside the .ssh directory.
+
+### Fix
+
+Moved PEM file:
+
+```bash
+mv ~/Downloads/*.pem ~/.ssh/
+```
+
 Applied proper permissions:
-chmod 400
-Learning
 
-SSH keys require correct permissions and paths.
+```bash
+chmod 400 ~/.ssh/*.pem
+```
 
-9. Git Permission Issues on EC2
-Errors
-dubious ownership
+### Learning
+
+SSH keys require correct permissions and proper paths.
+
+---
+
+## 9. Git Permission & Ownership Issues on EC2
+
+### Errors
+
+```text
+detected dubious ownership
 FETCH_HEAD permission denied
-Root Cause
+```
 
-Repository files were owned by root due to mixed sudo operations.
+### Root Cause
 
-Fix
+Repository files were owned by root because of mixed sudo operations.
+
+### Fix
+
+Fixed ownership:
+
+```bash
 sudo chown -R ubuntu:ubuntu /home/ubuntu/portfolio-project
-Learning
+```
+
+### Learning
 
 Consistent Linux file ownership is critical in automation environments.
 
-10. Ansible become_user Misconfiguration
-Error
+---
+
+## 10. Ansible become_user Misconfiguration
+
+### Error
+
+```text
 Unsupported parameters for (git) module: become_user
-Root Cause
+```
+
+### Root Cause
 
 become_user was incorrectly placed inside module parameters.
 
-Fix
+### Fix
 
 Moved become_user to task level.
 
-Learning
+### Learning
 
 Ansible privilege escalation directives belong at task level.
 
-11. Container Name Conflicts
-Error
+---
+
+## 11. Container Name Conflicts
+
+### Error
+
+```text
 container name "/portfolio" already exists
-Root Cause
+```
 
-Old standalone containers still existed.
+### Root Cause
 
-Fix
+Old standalone containers still existed in Docker.
 
-Removed stale containers using:
+### Fix
 
+Removed stale containers:
+
+```bash
 docker rm -f portfolio
-Learning
+```
 
-Container names must remain unique across Docker environment.
+### Learning
 
-12. Monitoring Stack Accessibility Issues
-Issue
+Container names must remain unique across Docker environments.
 
-Grafana/Prometheus worked on localhost but not via EC2 public IP.
+---
 
-Root Cause
+## 12. Monitoring Stack Accessible Only on Localhost
 
-Security group ports were not opened.
+### Issue
 
-Fix
+Grafana and Prometheus worked locally but not via EC2 public IP.
 
-Allowed:
+### Root Cause
 
-3000
-9090
+AWS Security Groups did not allow ports 3000 and 9090.
 
-in AWS security groups.
+### Fix
 
-Learning
+Added inbound rules for:
 
-Cloud networking/security groups directly affect observability accessibility.
+* Port 3000 (Grafana)
+* Port 9090 (Prometheus)
 
-13. Understanding Real DevOps Concepts
+### Learning
 
-Major concepts learned:
+Cloud networking and security groups directly affect monitoring accessibility.
 
-Infrastructure as Code
-Containerization
-Persistent Volumes
-CI/CD Pipelines
-Deployment Automation
-Infrastructure Reproducibility
-Monitoring & Observability
-Linux Permissions
-SSH Authentication
-Docker Networking
-YAML Configuration
-Git Ownership & Safe Directory Handling
-Elastic IP Usage
-HTTPS & SSL Automation Planning
+---
+
+## 13. Docker Volume Persistence Understanding
+
+### Issue
+
+Needed to rebuild Docker setup without losing Grafana dashboards.
+
+### Root Cause
+
+Confusion between deleting containers/images vs deleting volumes.
+
+### Fix
+
+Avoided:
+
+```bash
+docker compose down -v
+```
+
+Used:
+
+```bash
+docker compose down
+```
+
+### Learning
+
+Docker volumes persist data independently from containers and images.
+
+---
+
+## 14. CI/CD Deployment Validation
+
+### Validated Workflow
+
+```text
+Local Change
+    ↓
+Git Push
+    ↓
+GitHub Actions
+    ↓
+EC2 Pulls Latest Code
+    ↓
+Docker Compose Rebuild
+    ↓
+Website Updates Automatically
+```
+
+### Learning
+
+A real CI/CD pipeline requires:
+
+* Proper deployment paths
+* Correct Git synchronization
+* Clean Docker deployment strategy
+* Infrastructure consistency
+
+---
+
+## 15. Terraform & Ansible Integration Understanding
+
+### Realization
+
+Initially deployment was running on a manually created EC2 server.
+
+### Understanding Gained
+
+True Infrastructure as Code means:
+
+```text
+Terraform creates infrastructure
+Ansible configures infrastructure
+```
+
+instead of manually creating servers.
+
+### Learning
+
+Infrastructure should be reproducible entirely from code.
+
+---
+
+# Major DevOps Concepts Learned
+
+* Infrastructure as Code
+* CI/CD Automation
+* Containerization
+* Docker Networking
+* Persistent Volumes
+* Monitoring & Observability
+* Linux File Permissions
+* SSH Authentication
+* Git Ownership & Safe Directory Handling
+* YAML Configuration Management
+* Elastic IP Usage
+* HTTPS & SSL Automation
+* Infrastructure Reproducibility
+* Server Automation using Ansible
+* Cloud Security Groups & Networking
+
+---
+
+# Final Outcome
+
+Successfully built a production-style DevOps portfolio project with:
+
+* Automated infrastructure provisioning
+* Automated application deployment
+* Monitoring & observability stack
+* CI/CD automation pipeline
+* Dockerized deployment architecture
+* HTTPS-enabled application hosting
+* Real-world troubleshooting & debugging experience
+
+---
+
+# Future Improvements
+
+Planned future enhancements:
+
+* Fully automated SSL setup using Ansible
+* Route53 DNS automation using Terraform
+* Alertmanager integration
+* Slack/email alerts
+* Kubernetes migration
+* Blue-Green deployment strategy
+* Multi-stage Docker builds
+* Advanced monitoring dashboards
+
+---
+
+# Conclusion
+
+This project provided hands-on experience with real-world DevOps workflows, debugging scenarios, deployment automation, monitoring setup, and infrastructure management.
+
+More importantly, it helped build practical troubleshooting skills across:
+
+* Linux
+* Docker
+* Networking
+* Git
+* CI/CD
+* Cloud Infrastructure
+* Automation Tools
+
+The project evolved from a manually managed setup into a reproducible, automated DevOps deployment architecture.
