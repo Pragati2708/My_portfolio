@@ -3,7 +3,11 @@
 
   tasks:
 
-    - name: Update packages
+    # -----------------------------
+    # Install Required Packages
+    # -----------------------------
+
+    - name: Update apt packages
       apt:
         update_cache: yes
 
@@ -17,30 +21,129 @@
         name: git
         state: present
 
-    - name: Install Docker Compose
+    - name: Install Nginx
       apt:
-        name: docker-compose
+        name: nginx
         state: present
 
-    - name: Start Docker
+    - name: Install Certbot
+      apt:
+        name:
+          - certbot
+          - python3-certbot-nginx
+        state: present
+        update_cache: yes
+
+    # -----------------------------
+    # Start & Enable Services
+    # -----------------------------
+
+    - name: Start Docker Service
       service:
         name: docker
         state: started
         enabled: yes
 
+    - name: Start Nginx Service
+      service:
+        name: nginx
+        state: started
+        enabled: yes
+
+    # -----------------------------
+    # Clone Repository
+    # -----------------------------
+
+    - name: Remove old project folder if exists
+      file:
+        path: /home/ubuntu/portfolio-project
+        state: absent
+
     - name: Clone Repository
       become_user: ubuntu
+
       git:
         repo: https://github.com/Pragati2708/My_portfolio.git
         dest: /home/ubuntu/portfolio-project
         version: main
- 
 
-    - name: Run Docker Compose
+    # -----------------------------
+    # Fix Ownership
+    # -----------------------------
+
+    - name: Fix project ownership
+      file:
+        path: /home/ubuntu/portfolio-project
+        owner: ubuntu
+        group: ubuntu
+        recurse: yes
+
+    # -----------------------------
+    # Deploy Docker Containers
+    # -----------------------------
+
+    - name: Deploy Application
       become_user: ubuntu
 
       shell: |
         cd /home/ubuntu/portfolio-project
         docker compose down
         docker compose up -d --build
+
+    # -----------------------------
+    # Configure Nginx Reverse Proxy
+    # -----------------------------
+
+    - name: Configure Nginx Reverse Proxy
+      copy:
+        dest: /etc/nginx/sites-available/default
+        content: |
+          server {
+
+              server_name pragatisingh.in www.pragatisingh.in;
+
+              location / {
+
+                  proxy_pass http://localhost:8080;
+
+                  proxy_set_header Host $host;
+                  proxy_set_header X-Real-IP $remote_addr;
+                  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+              }
+
+              listen 80;
+          }
+
+    # -----------------------------
+    # Restart Nginx
+    # -----------------------------
+
+    - name: Restart Nginx
+      service:
+        name: nginx
+        state: restarted
+
+    # -----------------------------
+    # Configure SSL Certificate
+    # -----------------------------
+
+    - name: Configure SSL Certificate
+      shell: |
+        certbot --nginx \
+        --non-interactive \
+        --agree-tos \
+        --redirect \
+        -m Pragati2708@gmail.com \
+        -d pragatisingh.in \
+        -d www.pragatisingh.in
+
+    # -----------------------------
+    # Final Restart
+    # -----------------------------
+
+    - name: Restart Nginx After SSL
+      service:
+        name: nginx
+        state: restarted
+   
       
