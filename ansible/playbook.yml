@@ -1,3 +1,4 @@
+---
 - hosts: web
   become: yes
 
@@ -15,6 +16,12 @@
       apt:
         name: docker.io
         state: present
+
+    - name: Install Docker Compose Plugin
+      apt:
+        name: docker-compose-plugin
+        state: present
+        update_cache: yes
 
     - name: Install Git
       apt:
@@ -61,7 +68,6 @@
 
     - name: Clone Repository
       become_user: ubuntu
-
       git:
         repo: https://github.com/Pragati2708/My_portfolio.git
         dest: /home/ubuntu/portfolio-project
@@ -84,7 +90,6 @@
 
     - name: Deploy Application
       become_user: ubuntu
-
       shell: |
         cd /home/ubuntu/portfolio-project
         docker compose down
@@ -133,7 +138,7 @@
         --non-interactive \
         --agree-tos \
         --redirect \
-        -m Pragati2708@gmail.com \
+        -m pragati2708@gmail.com \
         -d pragatisingh.in \
         -d www.pragatisingh.in
 
@@ -145,5 +150,3 @@
       service:
         name: nginx
         state: restarted
-   
-      
