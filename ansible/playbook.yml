@@ -23,6 +23,15 @@
         state: present
         update_cache: yes
 
+    - name: Add ubuntu user to docker group
+      user:
+       name: ubuntu
+       groups: docker
+       append: yes
+
+    - name: Reboot Server
+      reboot:
+
     - name: Install Git
       apt:
         name: git
