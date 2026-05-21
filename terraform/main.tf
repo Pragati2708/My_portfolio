@@ -48,6 +48,6 @@ resource "aws_eip_association" "portfolio_eip_assoc" {
 
   instance_id   = aws_instance.portfolio_server.id
 
-  allocation_id = "eipalloc-08388db754ac0b27a"
+  allocation_id = "eipalloc-07dffa4ff23a0aae3"
  }
  
