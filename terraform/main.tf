@@ -44,13 +44,10 @@ resource "aws_instance" "portfolio_server" {
     Name = "terraform-portfolio-server"
   }
 }
-resource "aws_eip" "portfolio_eip" {
+resource "aws_eip_association" "portfolio_eip_assoc" {
 
-  instance = aws_instance.portfolio_server.id
+  instance_id   = aws_instance.portfolio_server.id
 
-  domain = "vpc"
-
-  tags = {
-    Name = "portfolio-elastic-ip"
-  }
-}
+  allocation_id = "eipalloc-08388db754ac0b27a"
+ }
+ 
