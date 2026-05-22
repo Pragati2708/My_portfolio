@@ -668,6 +668,51 @@ footer strong{color:var(--rust);}
   .nav-links{gap:0.1rem;}
   .nav-btn{font-size:0.8rem;padding:0.3rem 0.5rem;}
 }
+/* ── FEATURED / MAIN PROJECT CARD ── */
+.proj-card.featured-card{
+  border:2px solid var(--rust2);
+  box-shadow:4px 4px 0 var(--rust3);
+  grid-column:1/-1; /* spans full width of grid */
+}
+.proj-card.featured-card:hover{
+  border-color:var(--rust);
+  box-shadow:7px 8px 0 var(--rust4);
+}
+.featured-banner{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--rust);color:var(--cream);
+  font-family:var(--handwrite);font-size:0.78rem;font-weight:700;
+  padding:0.2rem 0.8rem;border-radius:12px;
+  margin-bottom:0.6rem;letter-spacing:0.03em;
+}
+.featured-inner{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;}
+@media(max-width:760px){.featured-inner{grid-template-columns:1fr;}.proj-card.featured-card{grid-column:auto;}}
+.badge-k8s{background:rgba(50,100,220,0.1);color:#3b6fda;border:1px solid #b0c8f8;}
+.badge-gitops{background:rgba(107,158,112,0.15);color:var(--olive);border:1px solid var(--sage3);}
+.proj-dual-links{display:flex;gap:0.6rem;flex-wrap:wrap;margin-top:0.75rem;}
+.proj-dual-links a{
+  font-family:var(--handwrite);font-size:0.82rem;color:var(--rust);
+  text-decoration:none;font-weight:700;
+  border:1.5px dashed var(--rust4);border-radius:10px;
+  padding:0.2rem 0.7rem;transition:all 0.2s;
+}
+.proj-dual-links a:hover{background:rgba(196,98,45,0.08);transform:translateX(2px);}
+.proj-impact{
+  background:var(--beige2);border-radius:12px;
+  padding:1rem 1.1rem;border:1.5px solid var(--beige3);
+  margin-top:0.75rem;
+}
+.proj-impact-label{
+  font-family:var(--handwrite);font-size:0.75rem;color:var(--sage);
+  letter-spacing:0.08em;margin-bottom:0.6rem;
+}
+.proj-impact-item{
+  font-family:var(--handwrite);font-size:0.85rem;color:var(--text2);
+  padding:0.25rem 0;border-bottom:1px dashed var(--beige3);line-height:1.5;
+  display:flex;gap:6px;align-items:flex-start;
+}
+.proj-impact-item:last-child{border-bottom:none;}
+.impact-dot{color:var(--sage);flex-shrink:0;margin-top:1px;}
 </style>
 </head>
 <body>
@@ -703,7 +748,7 @@ footer strong{color:var(--rust);}
       </div>
       <div class="hero-quote">"She is the one who create herself."</div>
       <p class="hero-bio">
-        6 years in IT. Started with COBOL and JCL at Cognizant & TCS, worked on real banking systems for banking projects. Then one night, discovered DevOps and everything changed. Now I'm building cloud infrastructure, containerizing things, and deploying dreams to production ☁
+        6 years in IT. Started with COBOL and JCL at Cognizant & TCS, built real enterprise banking systems for some of the world's largest financial institutions. Then one night, discovered DevOps and everything changed. Now I'm building cloud infrastructure, containerizing things, and deploying dreams to production ☁
       </p>
       <div class="hero-cta">
         <button class="btn-rust" onclick="show('projects',document.querySelectorAll('.nav-btn')[4])">🛠 see my work</button>
@@ -713,7 +758,11 @@ footer strong{color:var(--rust);}
     <div class="hero-right">
       <div class="scrapbook-frame">
         <div class="frame-main">
-          <div class="frame-initial">P</div>
+          <!-- ✿ PHOTO PLACEHOLDER — swap this div with your <img> tag when ready -->
+          <div id="photo-placeholder" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.6rem;z-index:2;padding:1rem;">
+            <div style="width:130px;height:130px;border-radius:50%;border:3px dashed var(--rust3);background:var(--beige2);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:2.8rem;">👤</div>
+            <span style="font-family:var(--handwrite);font-size:0.8rem;color:var(--text3);text-align:center;line-height:1.5;">your photo here ✿<br><span style="font-size:0.68rem;opacity:0.65;">replace with &lt;img src="photo.jpg"&gt;</span></span>
+          </div>
           <div class="frame-tape-h"></div>
           <div class="frame-tape-h2"></div>
           <div class="frame-sticker1">open<br>to<br>hire ✦</div>
@@ -814,13 +863,13 @@ footer strong{color:var(--rust);}
           <div class="tl-role">Systems Engineer</div>
           <div class="tl-org">Tata Consultancy Services (TCS) ✦ Thane, Maharashtra</div>
           <div class="tl-desc">
-            Working on enterprise banking systems for <strong>Project</strong>. Built COBOL programs for balance mismatch detection — fetching account balances via cursor, comparing three-way values, generating reports for business teams. Also worked on instant cashback feature for debit cards: batch processing daily transactions, calculating cashback points, applying minimum spend thresholds, and building APIs so customers can view cashback via the MBOL mobile app (SAR/AAR/Swagger files, tested via SoapUI).
+            Working on enterprise banking systems for a leading global financial institution. Built COBOL programs for balance mismatch detection — fetching account balances via cursor, comparing three-way values, generating reports for business teams. Also worked on instant cashback feature for debit cards: batch processing daily transactions, calculating cashback points, applying minimum spend thresholds, and building APIs so customers can view cashback via the mobile app (SAR/AAR/Swagger files, tested via SoapUI).
           </div>
           <div class="tl-tags">
             <span class="tl-tag">COBOL</span><span class="tl-tag">JCL</span>
             <span class="tl-tag">DB2</span><span class="tl-tag">API Building</span>
             <span class="tl-tag">Swagger</span><span class="tl-tag">SoapUI</span>
-            <span class="tl-tag rust-tag">Banking project</span><span class="tl-tag rust-tag">TCS</span>
+            <span class="tl-tag rust-tag">TCS</span>
           </div>
         </div>
       </div>
@@ -832,14 +881,14 @@ footer strong{color:var(--rust);}
           <div class="tl-role">Associate Developer</div>
           <div class="tl-org">Cognizant Technology Solutions ✦ Chennai</div>
           <div class="tl-desc">
-            Worked on <strong>Manulife</strong> — a leading international financial services group. Part of the development, testing, and automation team. Built and maintained APIs and services, handled production deployments, maintenance tasks and enhancement projects. Used Z/OS Connect for mainframe API integration, ESB for messaging, JIRA for project tracking, and Postman for API testing.
+            Worked for a leading international financial services group. Part of the development, testing, and automation team. Built and maintained APIs and services, handled production deployments, maintenance tasks and enhancement projects. Used Z/OS Connect for mainframe API integration, ESB for messaging, JIRA for project tracking, and Postman for API testing.
           </div>
           <div class="tl-tags">
             <span class="tl-tag">COBOL</span><span class="tl-tag">JCL</span>
             <span class="tl-tag">VSAM</span><span class="tl-tag">DB2</span>
             <span class="tl-tag">CICS</span><span class="tl-tag">Z/OS Connect</span>
             <span class="tl-tag">Postman</span><span class="tl-tag">ESB</span>
-            <span class="tl-tag rust-tag">Manulife project</span><span class="tl-tag rust-tag">Cognizant</span>
+            <span class="tl-tag rust-tag">Cognizant</span>
           </div>
         </div>
       </div>
@@ -958,6 +1007,133 @@ footer strong{color:var(--rust);}
   <div class="projects-wrap">
     <p class="project-intro">all real. all on github. all built from scratch. some worked first try (lies). click any project to visit the repo ✦</p>
     <div class="projects-grid">
+
+      <!-- ★ MAIN PROJECT: My Portfolio — built with DevOps -->
+      <div class="proj-card featured-card" onclick="window.open('https://github.com/Pragati2708/My_portfolio','_blank')">
+        <div class="proj-header">
+          <div class="featured-banner">★ main project · built end-to-end with DevOps</div>
+          <div class="proj-icon-row">
+            <span class="proj-emoji">🌐</span>
+            <div class="proj-badges">
+              <span class="proj-badge badge-docker">Docker</span>
+              <span class="proj-badge badge-cicd">GitHub Actions</span>
+              <span class="proj-badge badge-aws">AWS EC2</span>
+              <span class="proj-badge badge-shell">Shell</span>
+            </div>
+          </div>
+          <div class="proj-title">My DevOps Portfolio — the site you're looking at right now ✿</div>
+        </div>
+        <div class="proj-body">
+          <div class="featured-inner">
+            <div>
+              <div class="proj-desc">This portfolio website is itself a DevOps project. Built the full deployment pipeline from scratch — containerized with Docker, version-controlled with Git, automated with GitHub Actions CI/CD, and deployed live on AWS EC2. The site you're reading right now was shipped using the exact tools I'm telling you I know. That's the whole point.</div>
+              <div class="proj-impact">
+                <div class="proj-impact-label">problem → solution → impact ↓</div>
+                <div class="proj-impact-item"><span class="impact-dot">✦</span>needed to prove DevOps skills, not just list them on a page</div>
+                <div class="proj-impact-item"><span class="impact-dot">✦</span>built and shipped the portfolio using the real DevOps toolchain end-to-end</div>
+                <div class="proj-impact-item"><span class="impact-dot">✦</span>fully automated pipeline · deployed on AWS · verifiable on GitHub</div>
+              </div>
+              <div class="proj-dual-links" onclick="event.stopPropagation()">
+                <a href="https://github.com/Pragati2708/My_portfolio" target="_blank">⟶ github repo</a>
+                <a href="#" onclick="return false;" style="color:var(--text3);border-color:var(--beige3);">🌐 live site (you're here)</a>
+              </div>
+            </div>
+            <div>
+              <div class="flow-diagram">
+                <div style="font-family:var(--handwrite);font-size:0.72rem;color:var(--text3);margin-bottom:0.5rem;text-align:center;">how it gets deployed ↓</div>
+                <div class="flow-steps">
+                  <div class="flow-step sage-step">git push</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step">GitHub Actions</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step highlight">Docker Build</div>
+                </div>
+                <div style="text-align:center;color:var(--rust3);margin:4px 0;">↓</div>
+                <div class="flow-steps">
+                  <div class="flow-step sage-step">AWS EC2</div>
+                  <div class="flow-arrow">←</div>
+                  <div class="flow-step highlight">Docker Push</div>
+                  <div class="flow-arrow">←</div>
+                  <div class="flow-step">Registry</div>
+                </div>
+                <div style="text-align:center;color:var(--rust3);margin:4px 0;">↓</div>
+                <div class="flow-steps">
+                  <div class="flow-step sage-step" style="background:var(--rust);color:var(--cream);border-color:var(--rust);">🌐 live & running ✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <a href="https://github.com/Pragati2708/My_portfolio" target="_blank" class="github-link" onclick="event.stopPropagation()">⟶ view on github</a>
+          <span class="proj-lang">HTML · CSS · Docker · GitHub Actions · AWS</span>
+        </div>
+      </div>
+
+      <!-- ★ COMBINED PROJECT: Kubernetes GitOps Platform -->
+      <div class="proj-card featured-card" onclick="window.open('https://github.com/Pragati2708/k8s-gitops-config','_blank')" style="border-color:var(--sage);box-shadow:4px 4px 0 var(--sage3);">
+        <div class="proj-header">
+          <div class="featured-banner" style="background:var(--olive);">☸ kubernetes gitops · two repos · one platform</div>
+          <div class="proj-icon-row">
+            <span class="proj-emoji">☸</span>
+            <div class="proj-badges">
+              <span class="proj-badge badge-k8s">Kubernetes</span>
+              <span class="proj-badge badge-gitops">GitOps</span>
+              <span class="proj-badge badge-docker">Docker</span>
+              <span class="proj-badge badge-cicd">Helm</span>
+            </div>
+          </div>
+          <div class="proj-title">Kubernetes GitOps Platform — config + platform, one complete system ✦</div>
+        </div>
+        <div class="proj-body">
+          <div class="featured-inner">
+            <div>
+              <div class="proj-desc">Two GitHub repos, one platform. The <strong>config repo</strong> holds all declarative cluster configs — Helm charts, Kubernetes manifests, environment-specific values. The <strong>platform repo</strong> handles the infrastructure layer — cluster provisioning, operator setup, tooling. Together they form a full GitOps workflow where Git is the single source of truth for everything running in the cluster.</div>
+              <div class="proj-impact">
+                <div class="proj-impact-label">problem → solution → impact ↓</div>
+                <div class="proj-impact-item"><span class="impact-dot">✦</span>manual kubectl deploys are error-prone, hard to audit, unscalable</div>
+                <div class="proj-impact-item"><span class="impact-dot">✦</span>GitOps model — all changes go through Git, auto-synced to cluster state</div>
+                <div class="proj-impact-item"><span class="impact-dot">✦</span>declarative · auditable · self-healing · zero manual kubectl in production</div>
+              </div>
+              <div class="proj-dual-links" onclick="event.stopPropagation()">
+                <a href="https://github.com/Pragati2708/k8s-gitops-config" target="_blank">⟶ config repo</a>
+                <a href="https://github.com/Pragati2708/k8s-gitops-platform" target="_blank">⟶ platform repo</a>
+              </div>
+            </div>
+            <div>
+              <div class="flow-diagram">
+                <div style="font-family:var(--handwrite);font-size:0.72rem;color:var(--text3);margin-bottom:0.5rem;text-align:center;">gitops flow ↓</div>
+                <div class="flow-steps">
+                  <div class="flow-step sage-step">git commit</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step">PR merged</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step highlight">GitOps sync</div>
+                </div>
+                <div style="text-align:center;color:var(--sage);margin:4px 0;">↓</div>
+                <div class="flow-steps">
+                  <div class="flow-step sage-step">k8s cluster</div>
+                  <div class="flow-arrow">←</div>
+                  <div class="flow-step highlight">Helm apply</div>
+                  <div class="flow-arrow">←</div>
+                  <div class="flow-step">config repo</div>
+                </div>
+                <div style="text-align:center;color:var(--sage);margin:4px 0;">↓</div>
+                <div class="flow-steps">
+                  <div class="flow-step" style="background:var(--sage);color:var(--cream);border-color:var(--sage);">☸ reconciled & live ✓</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="proj-foot">
+          <div class="proj-dual-links" onclick="event.stopPropagation()" style="margin-top:0;">
+            <a href="https://github.com/Pragati2708/k8s-gitops-config" target="_blank">⟶ config repo</a>
+            <a href="https://github.com/Pragati2708/k8s-gitops-platform" target="_blank">⟶ platform repo</a>
+          </div>
+          <span class="proj-lang">Kubernetes · Helm · GitOps · YAML</span>
+        </div>
+      </div>
 
       <!-- PROJECT 1: System Performance Monitoring -->
       <div class="proj-card" onclick="window.open('https://github.com/Pragati2708/System-Performance-monitoring-Tool','_blank')">
