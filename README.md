@@ -333,13 +333,13 @@ PEM file was not placed inside the .ssh directory.
 Moved PEM file:
 
 ```bash
-mv ~/Downloads/*.pem ~/.ssh/
+mv ~/Downloads/2026_key.pem ~/.ssh/
 ```
 
 Applied proper permissions:
 
 ```bash
-chmod 400 ~/.ssh/*.pem
+chmod 400 ~/.ssh/2026_key.pem
 ```
 
 ### Learning
@@ -562,18 +562,267 @@ Successfully built a production-style DevOps portfolio project with:
 
 ---
 
-# Future Improvements
+# How to Run This Project
 
-Planned future enhancements:
+## 1. Clone Repository
 
-* Fully automated SSL setup using Ansible
-* Route53 DNS automation using Terraform
-* Alertmanager integration
-* Slack/email alerts
-* Kubernetes migration
-* Blue-Green deployment strategy
-* Multi-stage Docker builds
-* Advanced monitoring dashboards
+```bash
+git clone https://github.com/Pragati2708/My_portfolio.git
+cd My_portfolio
+```
+
+---
+
+## 2. Configure Terraform
+
+Navigate to terraform directory:
+
+```bash
+cd terraform
+```
+
+Initialize Terraform:
+
+```bash
+terraform init
+```
+
+Verify execution plan:
+
+```bash
+terraform plan
+```
+
+Create infrastructure:
+
+```bash
+terraform apply
+```
+
+Terraform automatically:
+
+* Creates EC2 instance
+* Creates Security Group
+* Attaches Elastic IP
+
+---
+
+## 3. Configure Ansible Inventory
+
+Update inventory file with Elastic IP:
+
+```ini
+[web]
+YOUR_ELASTIC_IP ansible_user=ubuntu ansible_ssh_private_key_file=~/.ssh/YOU_PEM_KEY_NAME.pem
+```
+
+---
+
+## 4. Run Ansible Playbook
+
+Navigate to project root:
+
+```bash
+cd ..
+```
+
+Test Ansible connectivity:
+
+```bash
+ansible web -i ansible/inventory -m ping
+```
+
+Run playbook:
+
+```bash
+ansible-playbook -i ansible/inventory ansible/playbook.yml
+```
+
+Ansible automatically:
+
+* Installs Docker
+* Installs Docker Compose
+* Installs Git
+* Installs Nginx
+* Installs Certbot
+* Clones GitHub repository
+* Configures Docker containers
+* Configures Nginx reverse proxy
+* Configures SSL certificates
+* Deploys monitoring stack
+
+---
+
+## 5. Access Services
+
+| Service           | URL                                                |
+| ----------------- | -------------------------------------------------- |
+| Portfolio Website | [https://pragatisingh.in](https://pragatisingh.in) |
+| Grafana           | http://YOUR_IP:3000                                |
+| Prometheus        | http://YOUR_IP:9090                                |
+
+---
+
+## 6. CI/CD Deployment Flow
+
+Any push to main branch automatically:
+
+```text
+Git Push
+   ↓
+GitHub Actions Trigger
+   ↓
+SSH Into EC2
+   ↓
+Git Pull Latest Code
+   ↓
+Docker Compose Rebuild
+   ↓
+Application Updated
+```
+
+---
+
+# Additional Infrastructure Troubleshooting & Learnings
+
+## 16. Elastic IP Recreation & Infrastructure Consistency
+
+### Issue
+
+Terraform recreated EC2 but public IP changed.
+
+### Root Cause
+
+Terraform was creating a new Elastic IP instead of reusing the existing Elastic IP.
+
+### Fix
+
+Replaced:
+
+```hcl
+resource "aws_eip"
+```
+
+with:
+
+```hcl
+resource "aws_eip_association"
+```
+
+and attached existing Allocation ID.
+
+### Learning
+
+Elastic IP persistence is critical for:
+
+* stable DNS
+* stable SSL
+* stable CI/CD
+* stable Ansible inventory
+
+---
+
+## 17. SSH Host Key Verification Errors After EC2 Recreation
+
+### Error
+
+```text
+WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!
+```
+
+### Root Cause
+
+Terraform recreated EC2 instance while reusing same Elastic IP.
+
+SSH fingerprint changed because the server itself changed.
+
+### Fix
+
+Removed old fingerprint:
+
+```bash
+ssh-keygen -R <ELASTIC_IP>
+```
+
+Reconnected manually.
+
+### Learning
+
+SSH host fingerprints are tied to server identity, not IP address.
+
+---
+
+## 18. Docker Compose Plugin Missing on Fresh EC2
+
+### Error
+
+```text
+docker: unknown command: docker compose
+```
+
+### Root Cause
+
+Fresh Ubuntu server installed Docker engine but not Docker Compose plugin.
+
+### Fix
+
+Installed:
+
+```bash
+docker-compose
+```
+
+package through Ansible.
+
+### Learning
+
+Fresh infrastructure recreation reveals hidden manual dependencies.
+
+---
+
+## 19. Docker Permission Denied Errors
+
+### Error
+
+```text
+PermissionError: [Errno 13] Permission denied
+```
+
+### Root Cause
+
+Ubuntu user was not part of Docker group.
+
+### Fix
+
+Added ubuntu user to docker group:
+
+```yaml
+- name: Add ubuntu user to docker group
+  user:
+    name: ubuntu
+    groups: docker
+    append: yes
+```
+
+### Learning
+
+Docker socket access depends on Linux group permissions.
+
+---
+
+## 20. Grafana Volume Persistence Understanding
+
+### Observation
+
+Grafana dashboards survived container recreation but disappeared after EC2 recreation.
+
+### Root Cause
+
+Docker volumes persist only inside the same EC2 machine.
+
+### Learning
+
+Container persistence and infrastructure persistence are different concepts.
 
 ---
 
